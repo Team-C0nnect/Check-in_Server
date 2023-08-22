@@ -4,9 +4,9 @@
 > 대소고 기숙사 관리 프로그램입니다.
 
 ### 서버 기술 스택 (Skill)
-| Language  |      Tool      | Collaboration  |
-|:--------:|:---------------:|:---------------:|
-|  Java  | InteliJ  |  GitHub  |
+| Language  |      Tool      |
+|:--------:|:---------------:|
+|  Java  | InteliJ |
 |  Spring  | Post Man |
 
 ### Commit 규칙
