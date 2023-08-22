@@ -6,7 +6,7 @@
 ### 서버 기술 스택 (Skill)
 | Language  |      Tool      | Collaboration  |
 |:--------:|:---------------:|:---------------:|
-|  Java  | InteliJ  |  |  GitHub  |
+|  Java  | InteliJ  |  GitHub  |
 |  Spring  | Post Man |
 
 ### Commit 규칙
