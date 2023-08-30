@@ -17,3 +17,16 @@ spring:
       ddl-auto: update
     show-sql: true
     defer-datasource-initialization: true
+
+  cache:
+    type: redis
+
+  data:
+    redis:
+      port: 6379
+      host: localhost
+
+server:
+  port: 9090
+
+
