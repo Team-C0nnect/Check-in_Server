@@ -18,8 +18,14 @@ public class User extends BaseTime {
 
     @Column(unique = true)
     private String id;
-    private String password;
+
+    @Column
     private String name;
+
+    @Column(unique = true)
+    private String password;
+
+    @Column(unique = true)
     private String email;
 
     @Enumerated(EnumType.STRING)
