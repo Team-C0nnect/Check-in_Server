@@ -1,6 +1,6 @@
 package com.project.checkIn.domain.user.domain;
 
-
+import com.project.checkIn.domain.user.domain.enums.UserType;
 import com.project.checkIn.global.entity.BaseTime;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -9,8 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "tb_user")
 public class User extends BaseTime {
     @Id
@@ -23,17 +22,15 @@ public class User extends BaseTime {
     private String name;
     private String email;
 
-//    @Enumerated(EnumType.STRING)
-//    private UserType userType;
+    @Enumerated(EnumType.STRING)
+    private UserType type;
 
     @Builder
-    public User(String id, String password, String name, String email
-                //UserType userType
-                ) {
+    public User(String id, String password, String name, String email, UserType type) {
         this.id = id;
         this.password = password;
         this.name = name;
         this.email = email;
-        //this.userType;
+        this.type = type;
     }
 }
