@@ -14,17 +14,17 @@ import lombok.NoArgsConstructor;
 public class Check extends BaseTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long CheckId;
 
     @Column(unique = true)
-    private String user_id;
+    private String id;
 
     @Column(unique = true)
     private String date;
 
     @Builder
-    public Check(String user_id, String date){
-        this.user_id = user_id;
+    public Check(String id, String date){
+        this.id = id;
         this.date = date;
     }
 
