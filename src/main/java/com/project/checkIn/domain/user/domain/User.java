@@ -16,9 +16,6 @@ public class User extends BaseTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-    @Column(unique = true)
-    private String id;
-
     @Column
     private String name;
 
@@ -33,7 +30,6 @@ public class User extends BaseTime {
 
     @Builder
     public User(String id, String password, String name, String email, UserType type) {
-        this.id = id;
         this.password = password;
         this.name = name;
         this.email = email;
