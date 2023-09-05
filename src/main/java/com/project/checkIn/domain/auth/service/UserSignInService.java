@@ -3,7 +3,6 @@ package com.project.checkIn.domain.auth.service;
 import com.project.checkIn.domain.auth.presentation.request.SignInRequest;
 import com.project.checkIn.domain.auth.presentation.responce.UserTokenResponse;
 import com.project.checkIn.domain.user.domain.User;
-import com.project.checkIn.domain.user.exception.PasswordWrongException;
 import com.project.checkIn.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
