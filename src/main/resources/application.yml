@@ -26,6 +26,13 @@ spring:
       port: 6379
       host: localhost
 
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 846014004935-s8as4ndv858n1r1790tk1t3pd92v66rv.apps.googleusercontent.com
+            client-secret: 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
 server:
   port: 9090
 

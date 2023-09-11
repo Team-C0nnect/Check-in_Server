@@ -3,7 +3,6 @@ package com.project.checkIn.domain.user.facade;
 import com.project.checkIn.domain.user.domain.User;
 import com.project.checkIn.domain.user.domain.repository.UserRepository;
 import com.project.checkIn.domain.user.exception.UserAlreadyExistsException;
-import com.project.checkIn.global.security.auth.AuthDetails;
 
 import lombok.RequiredArgsConstructor;
 
