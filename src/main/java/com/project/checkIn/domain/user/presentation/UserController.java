@@ -1,21 +1,20 @@
 package com.project.checkIn.domain.user.presentation;
 
-import com.project.checkIn.domain.user.presentation.dto.response.UserResponse;
-import com.project.checkIn.domain.user.service.FindUserInfoService;
-import lombok.RequiredArgsConstructor;
+
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/user")
-@RequiredArgsConstructor
+@RequestMapping("/user")
+@Slf4j
 public class UserController {
 
-    private final FindUserInfoService findUserInfoService;
-
-    @GetMapping("/info")
-    public UserResponse findUserInfo(){
-        return findUserInfoService.execute();
+    @GetMapping("/{id}")
+    public void getUser(@PathVariable long id){
+      log.info("........getUser");
     }
 }

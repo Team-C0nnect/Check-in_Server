@@ -2,8 +2,8 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/checkIn?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: 8556rjsdn
+    username: checkin
+    password: qwer1234!@#$
 
   jpa:
     database: mysql
@@ -21,10 +21,28 @@ spring:
   cache:
     type: redis
 
-  data:
-    redis:
-      port: 6379
-      host: localhost
+  redis:
+    port: 6379
+    host: localhost
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 59104051956-nbfnnmdjaq6i1cd5q862rundu7db5psi.apps.googleusercontent.com
+            client-secret: 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
+#            client-id: 846014004935-s8as4ndv858n1r1790tk1t3pd92v66rv.apps.googleusercontent.com
+#            client-secret: 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
+        provider:
+          google:
+            token-info: https://oauth2.googleapis.com/tokeninfo
+
+application:
+  jwt:
+    secretKey: 25432A462D4A614E645267556A586E3272357538782F413F4428472B4B625065
+    expiration: 900000
+    refreshExpiration: 999999
 
 server:
   port: 9090

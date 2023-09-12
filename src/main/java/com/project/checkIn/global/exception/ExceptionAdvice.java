@@ -5,8 +5,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @RestControllerAdvice
 public class ExceptionAdvice {
@@ -27,5 +31,6 @@ public class ExceptionAdvice {
                 .build();
         return new ResponseEntity<ErrorResponse>(response, ex.getError().getStatus());
     }
+
 
 }
