@@ -1,7 +1,6 @@
 package com.project.checkIn.domain.user.service;
 
-
-import com.project.checkIn.domain.user.domain.User;
+import com.project.checkIn.domain.user.domain.UserEntity;
 import com.project.checkIn.domain.user.facade.UserFacade;
 import com.project.checkIn.domain.user.presentation.dto.response.UserResponse;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ public class FindUserInfoService {
 
     @Transactional
     public UserResponse execute(){
-        User user = userFacade.getCurrentUser();
+        UserEntity user = userFacade.getCurrentUser();
 
         return UserResponse.of(user);
     }
