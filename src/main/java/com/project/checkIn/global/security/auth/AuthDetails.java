@@ -1,6 +1,6 @@
 package com.project.checkIn.global.security.auth;
 
-import com.project.checkIn.domain.user.domain.UserEntity;
+import com.project.checkIn.domain.user.presentation.dto.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,16 +13,16 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class AuthDetails implements UserDetails {
 
-    private final UserEntity user;
+    private final User user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton((GrantedAuthority) () -> user.getType().name());
+        return Collections.singleton((GrantedAuthority) () -> user.getUserType().name());
     }
 
     @Override
     public String getPassword() {
-        return this.user.getPassword();
+        return null;
     }
 
     @Override

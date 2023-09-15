@@ -1,7 +1,7 @@
 package com.project.checkIn.domain.user.service;
 
-import com.project.checkIn.domain.user.domain.UserEntity;
 import com.project.checkIn.domain.user.facade.UserFacade;
+import com.project.checkIn.domain.user.presentation.dto.User;
 import com.project.checkIn.domain.user.presentation.dto.response.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class FindUserInfoService {
 
     @Transactional
     public UserResponse execute(){
-        UserEntity user = userFacade.getCurrentUser();
+        User user = userFacade.getCurrentUser();
 
         return UserResponse.of(user);
     }
