@@ -10,9 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @RequiredArgsConstructor
 public class StdFacade {
+
+    private final StudentRepository studentRepository;
+
     @Transactional(readOnly = true)
     public Student findStdId(String stdId) {
-        return StudentRepository.findByStdId(stdId)
+        return studentRepository.findByStdId(stdId)
                 .orElseThrow(() -> StdNotFoundException.EXCEPTION);
     }
 }

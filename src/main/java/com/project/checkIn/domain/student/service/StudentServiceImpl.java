@@ -2,7 +2,6 @@ package com.project.checkIn.domain.student.service;
 
 import com.project.checkIn.domain.student.facade.StdFacade;
 import com.project.checkIn.domain.student.presentation.Student;
-import com.project.checkIn.domain.student.presentation.responce.StdResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
