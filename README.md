@@ -13,7 +13,7 @@
 
 Commit 형식
 ```shell
-(gitmoji)[레이블] :: 커밋 메시지 본문 (#이슈 번호)
+(gitmoji)[레이블] :: 커밋 메시지 본문
 ```
 
 gitmoji 설명

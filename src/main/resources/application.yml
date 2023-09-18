@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/checkIn?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/checkin?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: 8556rjsdn
+    username: checkin
+    password: Checkin12!@
 
   jpa:
     database: mysql
@@ -12,11 +12,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
-    generate-ddl: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
-    defer-datasource-initialization: true
 
   cache:
     type: redis
@@ -25,7 +23,30 @@ spring:
     port: 6379
     host: localhost
 
-server:
-  port: 9090
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 846014004935-s8as4ndv858n1r1790tk1t3pd92v66rv.apps.googleusercontent.com
+            client-secret: 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
+        provider:
+          google:
+            token-info: https://oauth2.googleapis.com/tokeninfo
+
+application:
+  jwt:
+    secretKey: 25432A462D4A614E645267556A586E3272357538782F413F4428472B4B625065
+    expiration: 900000
+    refreshExpiration: 999999
+
+springdoc:
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  swagger-ui:
+    path: /
+    disable-swagger-default-url: true
+    display-request-duration: true
+    tags-sorter: alpha
 
 
