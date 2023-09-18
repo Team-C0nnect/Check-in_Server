@@ -3,6 +3,7 @@ package com.project.checkIn.domain.student.facade;
 import com.project.checkIn.domain.student.domain.repository.StudentRepository;
 import com.project.checkIn.domain.student.exception.StdNotFoundException;
 import com.project.checkIn.domain.student.presentation.Student;
+import com.project.checkIn.domain.student.presentation.request.StdRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

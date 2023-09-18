@@ -1,7 +1,10 @@
 package com.project.checkIn.domain.student.service;
 
 
+import com.project.checkIn.domain.student.presentation.request.StdRequest;
+import com.project.checkIn.domain.student.presentation.responce.StdResponse;
+
 public interface StudentService {
 
-    void findStudent(String stdId);
+    StdResponse findStudent(StdRequest stdId);
 }
