@@ -19,4 +19,10 @@ public class StudentServiceImpl implements StudentService {
 
         return StdResponse.of(student);
     }
+
+    @Override
+    public void saveStudent(StdRequest stdRequest){
+        stdFacade.existsStdById(stdRequest.getStdId());
+        stdFacade.save(stdRequest.toEntity());
+    }
 }

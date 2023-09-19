@@ -5,6 +5,7 @@ import com.project.checkIn.domain.student.presentation.responce.StdResponse;
 import com.project.checkIn.domain.student.service.StudentServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,8 +19,13 @@ public class StudentController {
 
     @GetMapping("/info")
     public StdResponse findStdInfo(
-            @RequestBody StdRequest stdRequest
-    ){
+            @RequestBody StdRequest stdRequest){
         return studentService.findStudent(stdRequest);
+    }
+
+    @PostMapping("/std-id")
+    public void getStdId(
+            @RequestBody StdRequest stdRequest){
+        studentService.saveStudent(stdRequest);
     }
 }

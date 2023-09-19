@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
     Optional<Student> findByStdId(String stdId);
+    boolean existsByStdId(String stdId);
 }
