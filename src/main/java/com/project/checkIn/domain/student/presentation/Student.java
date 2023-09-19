@@ -1,11 +1,9 @@
 package com.project.checkIn.domain.student.presentation;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @NoArgsConstructor
 @Getter
