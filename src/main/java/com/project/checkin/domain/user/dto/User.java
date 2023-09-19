@@ -2,7 +2,11 @@ package com.project.checkin.domain.user.dto;
 
 
 import com.project.checkin.domain.user.domain.enums.UserRole;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Builder
 @AllArgsConstructor
