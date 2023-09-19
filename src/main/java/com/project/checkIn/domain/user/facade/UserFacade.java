@@ -1,5 +1,6 @@
 package com.project.checkIn.domain.user.facade;
 
+import com.project.checkIn.domain.user.domain.UserEntity;
 import com.project.checkIn.domain.user.domain.repository.UserRepository;
 import com.project.checkIn.domain.user.exception.UserNotFoundException;
 import com.project.checkIn.domain.user.presentation.dto.User;
@@ -17,20 +18,20 @@ public class UserFacade {
 
     private final UserRepository userRepository;
 
-    public User getCurrentUser() {
+    public UserEntity getCurrentUser() {
         AuthDetails auth = (AuthDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return findUserByEmail(auth.getUser().getEmail());
     }
 
     @Transactional(readOnly = true)
-    public User findUserByEmail(String email) {
+    public UserEntity findUserByEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 
     @Transactional
-    public void save(User user) {
-        userRepository.save(user);
+    public void save(UserEntity userEntity) {
+        userRepository.save(userEntity);
     }
 
 }

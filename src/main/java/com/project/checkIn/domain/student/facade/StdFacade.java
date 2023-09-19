@@ -1,5 +1,6 @@
 package com.project.checkIn.domain.student.facade;
 
+import com.project.checkIn.domain.student.domain.StudentEntity;
 import com.project.checkIn.domain.student.domain.repository.StudentRepository;
 import com.project.checkIn.domain.student.exception.StdNotFoundException;
 import com.project.checkIn.domain.student.presentation.Student;
@@ -27,7 +28,7 @@ public class StdFacade {
     }
 
     @Transactional
-    public void save(Student student){
-        studentRepository.save(student);
+    public void save(StudentEntity studentEntity){
+        studentRepository.save(studentEntity);
     }
 }

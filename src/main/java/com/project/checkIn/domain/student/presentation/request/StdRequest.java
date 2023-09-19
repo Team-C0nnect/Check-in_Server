@@ -1,5 +1,6 @@
 package com.project.checkIn.domain.student.presentation.request;
 
+import com.project.checkIn.domain.student.domain.StudentEntity;
 import com.project.checkIn.domain.student.presentation.Student;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,8 +11,8 @@ public class StdRequest {
 
     private String stdId;
 
-    public Student toEntity() {
-        return Student.builder()
+    public StudentEntity toEntity() {
+        return StudentEntity.builder()
                 .stdId(this.stdId)
                 .build();
     }
