@@ -1,6 +1,6 @@
 package com.project.checkIn.domain.user.facade;
 
-import com.project.checkIn.domain.user.domain.User;
+import com.project.checkIn.domain.user.domain.UserEntity;
 import com.project.checkIn.domain.user.domain.repository.UserRepository;
 import com.project.checkIn.domain.user.exception.UserAlreadyExistsException;
 
@@ -16,7 +16,7 @@ public class UserFacade {
 
     private final UserRepository userRepository;
 
-    public User getCurrentUser() {
+    public UserEntity getCurrentUser() {
         AuthDetails auth = (AuthDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return findUserById(auth.getUser().getId());
     }
@@ -28,13 +28,13 @@ public class UserFacade {
     }
 
     @Transactional(readOnly = true)
-    public User findUserById(String id) {
+    public UserEntity findUserById(String id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 
     @Transactional
-    public void save(User user) {
+    public void save(UserEntity user) {
         userRepository.save(user);
     }
 

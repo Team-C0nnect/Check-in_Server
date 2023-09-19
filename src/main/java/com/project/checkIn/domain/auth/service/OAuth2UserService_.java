@@ -1,4 +1,4 @@
-package com.project.checkIn.global.security.auth;
+package com.project.checkIn.domain.auth.service;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OAuth2UserService extends DefaultOAuth2UserService {
+public class OAuth2UserService_ extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
         OAuth2User oAuth2User = super.loadUser(userRequest);
