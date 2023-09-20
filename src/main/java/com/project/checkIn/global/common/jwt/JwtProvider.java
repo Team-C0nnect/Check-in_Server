@@ -1,10 +1,10 @@
 package com.project.checkIn.global.security.jwt;
 
-import com.project.checkIn.domain.user.domain.enums.UserRole;
+import com.project.checkIn.domain.user.domain.enums.UserType;
 import com.project.checkIn.domain.user.domain.repository.UserRepository;
 import com.project.checkIn.domain.user.exception.UserNotFoundException;
 import com.project.checkIn.domain.user.mapper.UserMapper;
-import com.project.checkIn.domain.user.presentation.dto.User;
+import com.project.checkIn.domain.user.presentation.dto.UserDto;
 import com.project.checkIn.global.security.auth.principal.CustomUserDetails;
 import com.project.checkIn.global.security.jwt.config.JwtProperties;
 import com.project.checkIn.global.security.jwt.enums.JwtType;
@@ -40,7 +40,7 @@ public class JwtProvider {
         }
     }
 
-    public String generateAccessToken(final String email, final UserRole userRole){
+    public String generateAccessToken(final String email, final UserType userRole){
         return Jwts.builder()
                 .setHeaderParam(Header.JWT_TYPE, JwtType.ACCESS)
                 .setSubject(email)
@@ -51,11 +51,11 @@ public class JwtProvider {
                 .compact();
     }
 
-    public String generateRefreshToken(final String email, final UserRole userRole){
+    public String generateRefreshToken(final String email, final UserType userType){
         return Jwts.builder()
                 .setHeaderParam(Header.JWT_TYPE,JwtType.ACCESS)
                 .setSubject(email)
-                .claim("authority", userRole)
+                .claim("authority", userType)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getRefreshExpiration()))
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
@@ -68,7 +68,7 @@ public class JwtProvider {
         if(isWrongType(claims,JwtType.ACCESS)){
             throw TokenTypeException.EXCEPTION;
         }
-        User user = userRepository.findByEmail(claims.getBody().getSubject()).map(userMapper::toUser).orElseThrow(() -> UserNotFoundException.EXCEPTION);
+        UserDto user = userRepository.findByEmail(claims.getBody().getSubject()).map(userMapper::toUser).orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         final CustomUserDetails details = new CustomUserDetails(user);
 
