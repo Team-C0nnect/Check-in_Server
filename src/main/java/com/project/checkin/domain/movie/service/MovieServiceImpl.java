@@ -13,6 +13,7 @@ public class MovieServiceImpl implements MovieService {
 
     private final MovieRepository movieRepository;
 
+    @Override
     public void register(MovieRequest movieRequest, MovieEntity movie){
         if (movieRepository.existsByTitle(movieRequest.getTitle())){
             throw StudentAlreadyExistsException.EXCEPTION;
