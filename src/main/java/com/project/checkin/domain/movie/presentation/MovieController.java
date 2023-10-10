@@ -20,14 +20,14 @@ public class MovieController {
 
     private final MovieService movieService;
 
-    @Operation(summary = "영화 등록", description = "등록")
+    @Operation(summary = "영화 등록", description = "영화를 등록합니다")
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public void registerMovie(MovieRequest request, MovieEntity movie){
         movieService.registerMovie(request, movie);
     }
 
-    @Operation(summary = "영화 조회", description = "조회")
+    @Operation(summary = "영화 조회", description = "영화를 조회합니다")
     @GetMapping("")
     public MovieResponse findMovie(MovieRequest request, MovieEntity movie){
         return movieService.findMovie(request,movie);
