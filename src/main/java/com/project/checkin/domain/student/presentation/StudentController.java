@@ -23,7 +23,7 @@ public class StudentController {
     @Operation(summary = "학생 조회", description = "")
     @GetMapping("")
     public ResponseEntity<Student> find() {
-        return ResponseEntity.ok(studentService.find());
+        return ResponseEntity.ok(studentService.findStudent());
     }
 
     @Operation(summary = "학생 등록", description = "")

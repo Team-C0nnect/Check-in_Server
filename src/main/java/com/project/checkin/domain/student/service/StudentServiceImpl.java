@@ -18,7 +18,7 @@ public class StudentServiceImpl implements StudentService {
     private final UserSecurity userSecurity;
     private final StudentMapper studentMapper;
     @Override
-    public Student find(){
+    public Student findStudent(){
         return studentRepository
                 .findById(userSecurity.getUser().getId())
                 .map(studentMapper::toStudent)
