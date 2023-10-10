@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
+@Schema(description = "영화 제목")
 @Getter
 @Setter
 public class MovieRequest {

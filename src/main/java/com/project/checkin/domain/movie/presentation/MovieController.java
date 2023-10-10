@@ -2,6 +2,7 @@ package com.project.checkin.domain.movie.presentation;
 
 import com.project.checkin.domain.movie.domain.MovieEntity;
 import com.project.checkin.domain.movie.dto.request.MovieRequest;
+import com.project.checkin.domain.movie.dto.response.MovieResponse;
 import com.project.checkin.domain.movie.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,12 +22,12 @@ public class MovieController {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public void registerMovie(MovieRequest request, MovieEntity movie){
-        movieService.register(request, movie);
+        movieService.registerMovie(request, movie);
     }
 
     @GetMapping("")
-    public void findMovie(){
-
+    public MovieResponse findMovie(MovieRequest request, MovieEntity movie){
+        return movieService.findMovie(request,movie);
     }
 
 }
