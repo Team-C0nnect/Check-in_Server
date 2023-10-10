@@ -1,4 +1,4 @@
-package com.project.checkin.domain.student.dto;
+package com.project.checkin.domain.movie.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Student {
+public class Movie {
+
     private Long id;
-    private String stdId;
+    private Long userId;
+    private String title;
+    private String manufactureYear;
+
 }
