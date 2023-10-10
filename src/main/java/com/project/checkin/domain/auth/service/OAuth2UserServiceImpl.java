@@ -12,6 +12,7 @@ import com.project.checkin.domain.user.dto.User;
 import com.project.checkin.global.common.jwt.JwtProvider;
 import com.project.checkin.global.common.jwt.enums.JwtType;
 import com.project.checkin.global.common.jwt.exception.TokenTypeException;
+import com.project.checkin.global.infra.firebase.service.FirebaseNotificationService;
 import com.project.checkin.global.infra.google.dto.OAuth2Attribute;
 import com.project.checkin.global.infra.google.service.GoogleService;
 import io.jsonwebtoken.Claims;
@@ -20,6 +21,7 @@ import io.jsonwebtoken.lang.Strings;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 @Service
 @RequiredArgsConstructor
@@ -29,6 +31,8 @@ public class OAuth2UserServiceImpl implements OAuth2UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final GoogleService googleService;
+    private final FirebaseNotificationService firebaseNotificationService;
+
     private final JwtProvider jwtProvider;
 
     public JsonWebTokenResponse auth(AuthenticationRequest request) {
@@ -37,6 +41,8 @@ public class OAuth2UserServiceImpl implements OAuth2UserService {
             throw UserNotFoundException.EXCEPTION;
         }
         User user = findOrSave(oAuth2Attribute);
+        if(StringUtils.hasText(request.getFcmToken()))
+            firebaseNotificationService.saveToken(user.getEmail(), request.getFcmToken());
         return JsonWebTokenResponse.builder()
                 .accessToken(jwtProvider.generateAccessToken(user.getEmail(), user.getUserRole()))
                 .refreshToken(jwtProvider.generateRefreshToken(user.getEmail(), user.getUserRole()))
