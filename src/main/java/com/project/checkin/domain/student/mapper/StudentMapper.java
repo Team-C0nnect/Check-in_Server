@@ -8,7 +8,10 @@ import org.springframework.stereotype.Component;
 public class StudentMapper {
 
     public Student toStudent(StudentEntity entity){
-        return Student.builder().id(entity.getId()).stdId(entity.getStdId()).build();
+        return Student.builder()
+                .id(entity.getId())
+                .stdId(entity.getStdId())
+                .build();
     }
 
     public StudentEntity toCreate(Long id, String stdId){
