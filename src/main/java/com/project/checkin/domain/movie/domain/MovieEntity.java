@@ -23,13 +23,11 @@ public class MovieEntity extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @Column
+    @Column(unique = true)
     private String title;
 
-    @Column
-    private String manufactureYear;
 
 }

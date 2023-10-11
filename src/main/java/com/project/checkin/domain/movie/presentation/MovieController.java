@@ -1,17 +1,20 @@
 package com.project.checkin.domain.movie.presentation;
 
 import com.project.checkin.domain.movie.domain.MovieEntity;
+import com.project.checkin.domain.movie.dto.Movie;
 import com.project.checkin.domain.movie.dto.request.MovieRequest;
 import com.project.checkin.domain.movie.dto.response.MovieResponse;
 import com.project.checkin.domain.movie.service.MovieService;
+import com.project.checkin.domain.movie.service.querydsl.MovieQueryService;
+import com.project.checkin.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,18 +22,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class MovieController {
 
     private final MovieService movieService;
+    private final MovieQueryService movieQueryService;
 
     @Operation(summary = "영화 등록", description = "영화를 등록합니다")
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void registerMovie(MovieRequest request, MovieEntity movie){
-        movieService.registerMovie(request, movie);
+    public void registerMovie(@Validated @RequestBody MovieRequest request){
+        movieService.register(request.toMovie());
     }
 
     @Operation(summary = "영화 조회", description = "영화를 조회합니다")
-    @GetMapping("")
-    public MovieResponse findMovie(MovieRequest request, MovieEntity movie){
-        return movieService.findMovie(request,movie);
+    @GetMapping("/list")
+    public ResponseEntity<List<Movie>> findMovie(PageRequest pageRequest){
+        return ResponseEntity.status(HttpStatus.OK).body(movieQueryService.findMovies(pageRequest));
     }
 
 }
