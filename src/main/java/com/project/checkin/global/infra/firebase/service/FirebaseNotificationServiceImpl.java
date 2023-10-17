@@ -23,12 +23,12 @@ public class FirebaseNotificationServiceImpl implements FirebaseNotificationServ
     @Async
     public void sendNotification(FirebaseNotification firebaseNotification) throws ExecutionException, InterruptedException {
         List<String> registrationTokens = new ArrayList<>();
-
-        firebaseNotification.getEmails().forEach(email -> {
-            if (hasKey(email)) {
-                registrationTokens.add(getToken(email));
-            }
-        });
+        registrationTokens.add("cYiz1mKFy06Nhh9uAHQp-3:APA91bGMlgTXbimN5fRvwV1Ikhmtt9vgJUvBLqIN7B0pa3-60EZvEcLm6bVO6ZLPpIQ8nI6BeHzcURydiuiq_5ryw—FPg1w6Xd_W-K7lvL0SbK058ZtwIoOgbj-oMRCmwDhhFcS_no8");
+//        firebaseNotification.getEmails().forEach(email -> {
+//            if (hasKey(email)) {
+//                registrationTokens.add(getToken(email));
+//            }
+//        });
         if (registrationTokens.size() > 0)
             send(createMessage(registrationTokens, createNotification(firebaseNotification), createApnsConfig()));
     }

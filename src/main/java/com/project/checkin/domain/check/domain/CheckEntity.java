@@ -1,4 +1,4 @@
-package com.project.checkin.domain.movie.domain;
+package com.project.checkin.domain.check.domain;
 
 import com.project.checkin.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
@@ -7,19 +7,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 
 @Entity
-@Builder
-@Getter
-@AllArgsConstructor
-@Table(name = "tb_movie")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MovieEntity extends BaseTimeEntity {
+@Table(name = "tb_check")
+public class CheckEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +21,6 @@ public class MovieEntity extends BaseTimeEntity {
     @Column(nullable = false)
     private Long userId;
 
-    @Column(unique = true)
-    private String title;
-
-
+    @Column(nullable = false)
+    private LocalDate checkDate;
 }
