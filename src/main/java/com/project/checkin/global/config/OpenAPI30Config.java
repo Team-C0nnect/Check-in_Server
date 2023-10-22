@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
         name = "BearerAuthentication",
         type = SecuritySchemeType.HTTP,
         bearerFormat = "JWT",
-        scheme = "bearer"
+        scheme = "Bearer"
 )
 public class OpenAPI30Config {
 }

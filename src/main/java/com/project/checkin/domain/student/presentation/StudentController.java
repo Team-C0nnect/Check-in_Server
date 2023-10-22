@@ -3,8 +3,8 @@ package com.project.checkin.domain.student.presentation;
 import com.project.checkin.domain.student.dto.Student;
 import com.project.checkin.domain.student.dto.request.StudentRequest;
 import com.project.checkin.domain.student.service.StudentService;
-import com.project.checkin.domain.student.service.StudentServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,6 +13,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "학생", description = "학생")
+@SecurityRequirement(name = "BearerAuthentication")
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/student")
