@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface ConditionRepository extends JpaRepository<ConditionEntity,Long> {
     Optional<ConditionEntity> findById(Long id);
-    boolean existsByUserId(String userId);
+    boolean existsByUserId(Long userId);
 }

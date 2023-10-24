@@ -20,7 +20,7 @@ public class SleepoverMapper {
                 .build();
     }
 
-    public SleepoverEntity toCreate(Long id, String userId, LocalDate startDate, LocalDate endDate, String reason){
+    public SleepoverEntity toCreate(Long id, Long userId, LocalDate startDate, LocalDate endDate, String reason){
         return SleepoverEntity.builder()
                 .id(id)
                 .userId(userId)

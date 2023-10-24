@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class ConditionRequest {
     @Schema(description = "컨디션 상태")
-    private String userId;
+    private Long userId;
     private Feels feels;
 
     Condition toCondition(){

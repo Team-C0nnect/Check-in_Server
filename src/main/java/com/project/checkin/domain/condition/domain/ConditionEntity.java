@@ -22,11 +22,12 @@ public class ConditionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String userId;
+    @Column(nullable = false)
+    private Long userId;
 
     @Enumerated(EnumType.STRING)
     private Feels todayFeels;
-    
+
     private LocalDate endDate;
 
 }

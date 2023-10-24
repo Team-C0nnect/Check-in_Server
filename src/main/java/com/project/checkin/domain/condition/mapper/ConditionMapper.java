@@ -20,7 +20,7 @@ public class ConditionMapper {
                 .build();
     }
 
-    public ConditionEntity toCreate(Long id, String userId, Feels feels){
+    public ConditionEntity toCreate(Long id, Long userId, Feels feels){
         return ConditionEntity.builder()
                 .id(id)
                 .userId(userId)
