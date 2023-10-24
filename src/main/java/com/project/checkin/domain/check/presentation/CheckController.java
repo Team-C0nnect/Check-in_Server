@@ -4,6 +4,7 @@ import com.project.checkin.domain.check.dto.Check;
 import com.project.checkin.domain.check.service.querydsl.CheckQueryService;
 import com.project.checkin.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @Tag(name = "출석 명단", description = "출석 명단")
+@SecurityRequirement(name = "BearerAuthentication")
 @RestController
 @RequestMapping("/attendance")
 @RequiredArgsConstructor
@@ -24,7 +26,7 @@ public class CheckController {
 
     @Operation(summary = "출석 명단", description = "출석 명단을 표시합니다")
     @GetMapping("/list")
-    public ResponseEntity<List<Check>> findCheck(PageRequest pageRequest){
+    public ResponseEntity<List<Check>> findCheck(PageRequest pageRequest) {
         return ResponseEntity.status(HttpStatus.OK).body(checkQueryService.findCheck(pageRequest));
     }
 }

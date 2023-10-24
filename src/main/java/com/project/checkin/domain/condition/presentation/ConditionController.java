@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/Condtion")
+@RequestMapping("/condtion")
 public class ConditionController {
     private final ConditionService conditionService;
     private final ConditionRepository conditionRepository;
 
     @PostMapping("")
-    public void register(@Validated @RequestBody ConditionRequest request){
+    public void register(@Validated @RequestBody ConditionRequest request) {
         conditionService.registerMyFeels(request);
     }
 
     @GetMapping("")
-    public ResponseEntity<Condition> find(){
+    public ResponseEntity<Condition> find() {
         return ResponseEntity.ok(conditionService.find());
     }
 
