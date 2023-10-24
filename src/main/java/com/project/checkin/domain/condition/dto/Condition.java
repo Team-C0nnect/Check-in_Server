@@ -1,7 +1,11 @@
 package com.project.checkin.domain.condition.dto;
 
 import com.project.checkin.domain.condition.domain.enums.Feels;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 @Builder
