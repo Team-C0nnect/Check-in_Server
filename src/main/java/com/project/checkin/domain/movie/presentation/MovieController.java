@@ -18,7 +18,6 @@ import java.util.List;
 
 @Tag(name = "영화", description = "영화")
 @SecurityRequirement(name = "BearerAuthentication")
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/movie")

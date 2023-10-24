@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "", description = "")
 @SecurityRequirement(name = "BearerAuthentication")
-
+@Tag(name = "유저", description = "유저")
 @RestController
 @RequestMapping("/user")
 @Slf4j

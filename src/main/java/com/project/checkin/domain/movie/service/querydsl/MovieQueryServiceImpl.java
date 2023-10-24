@@ -13,7 +13,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class MovieQueryServiceImpl implements MovieQueryService {
-private final MovieQueryRepository movieQueryRepository;
+
+    private final MovieQueryRepository movieQueryRepository;
     @Override
     public List<Movie> findMovies(PageRequest pageRequest) {
         return movieQueryRepository.findMovies(pageRequest);

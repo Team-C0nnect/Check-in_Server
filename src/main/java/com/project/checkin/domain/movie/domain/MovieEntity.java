@@ -5,9 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "tb_movie")
 @Builder
 @AllArgsConstructor
+@Table(name = "tb_movie")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class MovieEntity extends BaseTimeEntity {
@@ -16,7 +16,7 @@ public class MovieEntity extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id", nullable = false)
+    @Column(nullable = false)
     private Long userId;
 
     @Column(unique = true)
