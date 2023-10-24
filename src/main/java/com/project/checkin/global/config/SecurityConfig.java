@@ -1,6 +1,8 @@
 package com.project.checkin.global.config;
 
 
+import com.project.checkin.domain.sleepover.domain.enums.SleepoverStatus;
+import com.project.checkin.domain.user.domain.enums.UserRole;
 import com.project.checkin.global.common.jwt.filter.JwtAuthenticationFilter;
 
 import com.project.checkin.global.common.jwt.filter.JwtExceptionFilter;
@@ -32,6 +34,8 @@ public class SecurityConfig {
                         authorize -> authorize
                                     .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
                                     .requestMatchers("/auth/**").permitAll()
+//                                    .requestMatchers(String.valueOf(UserRole.USER)).permitAll()
+//                                    .requestMatchers("/").permitAll()
                                     .anyRequest()
                                     .authenticated()
                 )

@@ -1,6 +1,5 @@
 package com.project.checkin.global.config;
 
-
 import com.querydsl.jpa.JPQLTemplates;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
@@ -17,5 +16,3 @@ public class QuerydslConfig {
     public JPAQueryFactory jpaQueryFactory() {
         return new JPAQueryFactory(JPQLTemplates.DEFAULT, entityManager);
     }
-
-}
