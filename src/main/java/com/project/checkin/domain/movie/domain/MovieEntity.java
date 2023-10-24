@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Builder
-@Getter
 @AllArgsConstructor
+@Getter
 @Table(name = "tb_movie")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MovieEntity extends BaseTimeEntity {
@@ -30,6 +30,5 @@ public class MovieEntity extends BaseTimeEntity {
 
     @Column(unique = true)
     private String title;
-
 
 }
