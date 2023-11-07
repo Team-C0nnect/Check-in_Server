@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,17 +19,17 @@ public class Sleepover {
 
     private Long id;
 
-    private String userId;
+    private Long userId;
 
-    private LocalDate startDate;
+    private LocalDateTime startDateTime;
 
-    private LocalDate endDate;
+    private LocalDateTime endDateTime;
 
     private String reason;
 
     private SleepoverStatus approval;
 
-    private LocalDate createdDate;
+    private LocalDateTime createdDate;
 
-    private LocalDate modifiedDate;
+    private LocalDateTime modifiedDate;
 }

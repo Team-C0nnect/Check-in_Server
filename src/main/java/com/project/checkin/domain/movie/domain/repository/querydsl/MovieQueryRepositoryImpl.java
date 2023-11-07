@@ -20,6 +20,7 @@ public class MovieQueryRepositoryImpl implements MovieQueryRepository {
 
     @Override
     public List<Movie> findMovies(PageRequest pageRequest) {
+
         return queryFactory
                 .select(movieProjection())
                 .from(movieEntity)

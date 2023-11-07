@@ -1,29 +1,25 @@
-package com.project.checkin.domain.condition.domain;
+package com.project.checkin.domain.leave.domain;
 
-import com.project.checkin.domain.condition.domain.enums.Feels;
+import com.project.checkin.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Getter
-@Builder
+@SuperBuilder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-@Table(name = "tb_condition")
-public class ConditionEntity{
+@Table(name = "tb_leave")
+public class LeaveEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,11 +28,7 @@ public class ConditionEntity{
     @Column(nullable = false)
     private Long userId;
 
-    @Enumerated(EnumType.STRING)
-    private Feels todayFeels;
-
-    @Column(nullable = false)
-    private LocalDateTime endDateTime;
-
+    @Column(nullable = false, unique = true)
+    private LocalDate leaveDate;
 
 }

@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_sleepover")
@@ -22,13 +23,13 @@ public class SleepoverEntity extends BaseTimeEntity {
     private Long id;
 
     @Column
-    private String userId;
+    private Long userId;
 
     @Column
-    private LocalDate startDate;
+    private LocalDateTime startDateTime;
 
     @Column
-    private LocalDate endDate;
+    private LocalDateTime endDateTime;
 
     @Column
     private String reason;

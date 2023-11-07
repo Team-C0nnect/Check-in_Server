@@ -1,10 +1,6 @@
 package com.project.checkin.global.config;
 
-
-import com.project.checkin.domain.sleepover.domain.enums.SleepoverStatus;
-import com.project.checkin.domain.user.domain.enums.UserRole;
 import com.project.checkin.global.common.jwt.filter.JwtAuthenticationFilter;
-
 import com.project.checkin.global.common.jwt.filter.JwtExceptionFilter;
 import com.project.checkin.global.common.jwt.handler.JwtAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 
 @Configuration
 @EnableWebSecurity
@@ -36,12 +31,14 @@ public class SecurityConfig {
                                     .requestMatchers("/auth/**").permitAll()
 //                                    .requestMatchers(String.valueOf(UserRole.USER)).permitAll()
 //                                    .requestMatchers("/").permitAll()
+                                    .requestMatchers("/condition-admin/**").hasAnyAuthority("ADMIN","MANAGER")
+                                    .requestMatchers("/sleepover-admin/**").hasAnyAuthority("ADMIN","MANAGER")
+                                    .requestMatchers("/leave/**").hasAnyAuthority("ADMIN","MANAGER")
                                     .anyRequest()
                                     .authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtExceptionFilter, JwtAuthenticationFilter.class);
-
 
         return http.build();
     }
