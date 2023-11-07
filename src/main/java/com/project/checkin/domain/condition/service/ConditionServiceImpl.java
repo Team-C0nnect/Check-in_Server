@@ -12,9 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ConditionServiceImpl implements ConditionService{
+
     ConditionRepository conditionRepository;
     UserSecurity userSecurity;
     ConditionMapper conditionMapper;
+
     @Override
     public Condition find(){
         return conditionRepository
@@ -27,4 +29,5 @@ public class ConditionServiceImpl implements ConditionService{
     public void registerMyFeels(ConditionRequest request) {
 
     }
+
 }
