@@ -16,14 +16,14 @@ public class ConditionController {
     private final ConditionService conditionService;
     private final ConditionRepository conditionRepository;
 
-    @PostMapping("")
-    public void register(@Validated @RequestBody ConditionRequest request) {
-        conditionService.registerMyFeels(request);
-    }
-
     @GetMapping("")
     public ResponseEntity<Condition> find() {
         return ResponseEntity.ok(conditionService.find());
+    }
+
+    @PostMapping("")
+    public void register(@Validated @RequestBody ConditionRequest request){
+        conditionService.registerMyFeels(request);
     }
 
 }

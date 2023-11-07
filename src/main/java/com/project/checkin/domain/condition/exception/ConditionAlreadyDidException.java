@@ -6,6 +6,7 @@ import com.project.checkin.global.exception.BusinessException;
 public class ConditionAlreadyDidException extends BusinessException {
     public static final ConditionAlreadyDidException EXCEPTION = new ConditionAlreadyDidException();
 
-    private ConditionAlreadyDidException(){super(ConditionError.CONDITION_NOT_SELECTED);
+    private ConditionAlreadyDidException(){
+        super(ConditionError.CONDITION_NOT_SELECTED);
     }
 }

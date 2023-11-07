@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MovieMapper {
     public MovieEntity createMovieEntity(Long userId, Movie movie){
-        return MovieEntity.builder().id(userId).title(movie.getTitle()).build();
+        return MovieEntity.builder().userId(userId).title(movie.getTitle()).build();
     }
 }
