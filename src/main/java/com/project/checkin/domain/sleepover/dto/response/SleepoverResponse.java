@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class SleepoverResponse {
-    private String userId;
+    private Long userId;
     private SleepoverStatus approval;
 
     public static SleepoverResponse of(SleepoverEntity sleepover){

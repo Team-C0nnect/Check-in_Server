@@ -2,10 +2,17 @@ package com.project.checkin.domain.sleepover.domain;
 
 import com.project.checkin.domain.sleepover.domain.enums.SleepoverStatus;
 import com.project.checkin.global.entity.BaseTimeEntity;
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.springframework.http.HttpStatus;
 
 import java.time.LocalDate;
 
@@ -21,16 +28,16 @@ public class SleepoverEntity extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String userId;
+    @Column(nullable = false)
+    private Long userId;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate startDate;
 
-    @Column
+    @Column(nullable = false)
     private LocalDate endDate;
 
-    @Column
+    @Column(nullable = false)
     private String reason;
 
     @Column
