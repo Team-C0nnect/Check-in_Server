@@ -1,10 +1,7 @@
 package com.project.checkin.global.config;
 
 
-import com.project.checkin.domain.sleepover.domain.enums.SleepoverStatus;
-import com.project.checkin.domain.user.domain.enums.UserRole;
 import com.project.checkin.global.common.jwt.filter.JwtAuthenticationFilter;
-
 import com.project.checkin.global.common.jwt.filter.JwtExceptionFilter;
 import com.project.checkin.global.common.jwt.handler.JwtAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +22,7 @@ public class SecurityConfig {
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final JwtExceptionFilter jwtExceptionFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
