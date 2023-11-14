@@ -22,7 +22,6 @@ import java.time.LocalDateTime;
 public class AttendanceScheduler {
 
     private final JobLauncher jobLauncher;
-
     private final Job checkAttendanceJob;
 
     @Scheduled(cron = "0 0 22 * * *", zone = "Asia/Seoul")
