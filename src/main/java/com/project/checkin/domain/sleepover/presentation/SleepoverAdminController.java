@@ -9,7 +9,6 @@ import com.project.checkin.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/sleepover-admin")
 public class SleepoverAdminController {
+
     private final SleepoverService sleepoverService;
     private final SleepoverQueryService querydslService;
     @Operation(summary = "외박 승인")
