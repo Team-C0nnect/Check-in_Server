@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface CheckQueryService {
 
+    List<String> findAllNonCheckUser(PageRequest pageRequest);
+
     List<Check> findCheck(PageRequest pageRequest);
 
 }

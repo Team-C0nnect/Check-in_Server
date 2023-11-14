@@ -43,6 +43,9 @@ application:
 firebase:
   sdk:
     path: checkin-52ec9-firebase-adminsdk-ogjpu-a96b4a67f0.json
+  notification:
+    non-check-title: ✅✅✅✅✅✅
+    non-check-message: 출석하자~!!
 
 springdoc:
   default-consumes-media-type: application/json;charset=UTF-8

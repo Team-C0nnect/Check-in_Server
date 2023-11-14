@@ -18,4 +18,9 @@ public class PageRequest {
         page = 1;
         size = 10;
     }
+
+    public PageRequest(int page, int size) {
+        this.page = page;
+        this.size = size;
+    }
 }

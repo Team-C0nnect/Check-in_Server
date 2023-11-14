@@ -10,9 +10,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CheckQueryServiceImpl implements CheckQueryService{
+public class CheckQueryServiceImpl implements CheckQueryService {
 
     private final CheckQueryRepository checkQueryRepository;
+
+    public List<String> findAllNonCheckUser(PageRequest pageRequest) {
+        return checkQueryRepository.findAllNonCheckUser(pageRequest);
+    }
 
     @Override
     public List<Check> findCheck(PageRequest pageRequest) {
