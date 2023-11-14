@@ -6,5 +6,7 @@ import com.project.checkin.global.common.dto.request.PageRequest;
 import java.util.List;
 
 public interface CheckQueryRepository {
+    List<String> findAllNonCheckUser(PageRequest pageRequest);
+
     List<Check> findCheck(PageRequest pageRequest);
 }

@@ -1,6 +1,12 @@
 package com.project.checkin.global.infra.firebase.service;
 
-import com.google.firebase.messaging.*;
+import com.google.firebase.messaging.ApnsConfig;
+import com.google.firebase.messaging.Aps;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.Message;
+import com.google.firebase.messaging.MulticastMessage;
+import com.google.firebase.messaging.Notification;
+import com.project.checkin.global.infra.firebase.config.FirebaseNotificationConfig;
 import com.project.checkin.global.infra.firebase.domain.repository.FirebaseTokenRepository;
 import com.project.checkin.global.infra.firebase.dto.FirebaseNotification;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +14,6 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -18,19 +23,19 @@ import java.util.concurrent.ExecutionException;
 public class FirebaseNotificationServiceImpl implements FirebaseNotificationService {
 
     private final FirebaseTokenRepository firebaseTokenRepository;
+    private final FirebaseNotificationConfig firebaseNotificationConfig;
 
+    @Async
+    public void sendNonCheckNotification(List<String> tokens) throws ExecutionException, InterruptedException {
+        if (tokens.size() > 0)
+            send(createMessage(tokens, createNotification(firebaseNotificationConfig.getNonCheckTitle(), firebaseNotificationConfig.getNonCheckMessage()), createApnsConfig()));
+    }
 
     @Async
     public void sendNotification(FirebaseNotification firebaseNotification) throws ExecutionException, InterruptedException {
-        List<String> registrationTokens = new ArrayList<>();
-        registrationTokens.add("cYiz1mKFy06Nhh9uAHQp-3:APA91bGMlgTXbimN5fRvwV1Ikhmtt9vgJUvBLqIN7B0pa3-60EZvEcLm6bVO6ZLPpIQ8nI6BeHzcURydiuiq_5ryw—FPg1w6Xd_W-K7lvL0SbK058ZtwIoOgbj-oMRCmwDhhFcS_no8");
-//        firebaseNotification.getEmails().forEach(email -> {
-//            if (hasKey(email)) {
-//                registrationTokens.add(getToken(email));
-//            }
-//        });
-        if (registrationTokens.size() > 0)
-            send(createMessage(registrationTokens, createNotification(firebaseNotification), createApnsConfig()));
+//        List<String> registrationTokens = firebaseNotification.getEmails().stream().filter(email -> hasKey(email)).map(email -> getToken(email)).toList();
+//                if (registrationTokens.size() > 0)
+//                    send(createMessage(registrationTokens, createNotification(firebaseNotification), createApnsConfig()));
     }
 
     private void send(MulticastMessage message) throws ExecutionException, InterruptedException {
@@ -54,7 +59,13 @@ public class FirebaseNotificationServiceImpl implements FirebaseNotificationServ
         return ApnsConfig.builder().setAps(Aps.builder().setSound("default").build()).build();
     }
 
-    private com.google.firebase.messaging.Notification createNotification(FirebaseNotification firebaseNotification) {
+    private Notification createNotification(String title, String message) {
+        return com.google.firebase.messaging.Notification.builder()
+                .setTitle(title)
+                .setBody(message).build();
+    }
+
+    private Notification createNotification(FirebaseNotification firebaseNotification) {
         return com.google.firebase.messaging.Notification.builder()
                 .setTitle(firebaseNotification.getTitle())
                 .setBody(firebaseNotification.getMessage()).build();
@@ -69,11 +80,11 @@ public class FirebaseNotificationServiceImpl implements FirebaseNotificationServ
         firebaseTokenRepository.deleteToken(email);
     }
 
-    private boolean hasKey(String email) {
+    public boolean hasKey(String email) {
         return firebaseTokenRepository.hasKey(email);
     }
 
-    private String getToken(String email) {
+    public String getToken(String email) {
         return firebaseTokenRepository.getToken(email);
     }
 }

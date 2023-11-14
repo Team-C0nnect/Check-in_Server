@@ -12,7 +12,7 @@ import java.util.Map;
 @Setter
 @Builder
 public class FirebaseNotification {
-    private List<String> emails;
+    private List<String> tokens;
     private String message;
     private String title;
     @Builder.Default

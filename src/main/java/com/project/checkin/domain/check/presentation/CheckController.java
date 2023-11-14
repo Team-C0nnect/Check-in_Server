@@ -3,6 +3,7 @@ package com.project.checkin.domain.check.presentation;
 import com.project.checkin.domain.check.dto.Check;
 import com.project.checkin.domain.check.dto.response.CheckCodeResponse;
 import com.project.checkin.domain.check.service.CheckCodeService;
+import com.project.checkin.domain.check.service.CheckService;
 import com.project.checkin.domain.check.service.querydsl.CheckQueryService;
 import com.project.checkin.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,8 +26,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CheckController {
 
+    private final CheckService checkService;
     private final CheckQueryService checkQueryService;
     private final CheckCodeService checkCodeService;
+
+    @Operation(summary = "출석 체크", description = "출석 체크")
+    @PostMapping("")
+    public void attendanceCheck() {
+        checkService.attendance();
+    }
+
 
     @Operation(summary = "출석 명단", description = "출석 명단을 표시합니다")
     @GetMapping("/list")
