@@ -1,5 +1,4 @@
 package com.project.checkin.global.config;
-
 import com.project.checkin.global.common.jwt.filter.JwtAuthenticationFilter;
 import com.project.checkin.global.common.jwt.filter.JwtExceptionFilter;
 import com.project.checkin.global.common.jwt.handler.JwtAuthenticationEntryPoint;
@@ -20,6 +19,7 @@ public class SecurityConfig {
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final JwtExceptionFilter jwtExceptionFilter;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http

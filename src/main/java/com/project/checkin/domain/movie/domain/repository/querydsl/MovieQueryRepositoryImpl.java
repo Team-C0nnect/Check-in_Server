@@ -1,7 +1,7 @@
 package com.project.checkin.domain.movie.domain.repository.querydsl;
 
 import com.project.checkin.domain.movie.dto.Movie;
-import com.project.checkin.global.common.dto.request.PageRequest;
+import com.project.checkin.domain.movie.dto.request.MoviePageRequest;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -19,13 +19,12 @@ public class MovieQueryRepositoryImpl implements MovieQueryRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Movie> findMovies(PageRequest pageRequest) {
-
+    public List<Movie> findMovies(MoviePageRequest moviePageRequest) {
         return queryFactory
                 .select(movieProjection())
                 .from(movieEntity)
-                .offset((pageRequest.getPage() - 1) * pageRequest.getSize())
-                .limit(pageRequest.getSize())
+                .offset((moviePageRequest.getPage() - 1) * moviePageRequest.getSize())
+                .limit(moviePageRequest.getSize())
                 .orderBy(movieEntity.id.desc())
                 .fetch();
     }
@@ -39,5 +38,4 @@ public class MovieQueryRepositoryImpl implements MovieQueryRepository {
                 movieEntity.createdDateTime
         );
     }
-
 }

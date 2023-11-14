@@ -33,5 +33,4 @@ public class AuthController {
         return oAuth2UserService.refresh(refreshTokenRequest.getRefreshToken());
     }
 
-
 }

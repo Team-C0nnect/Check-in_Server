@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class ConditionResponse {
-    private String userId;
+    private Long userId;
     private Feels feels;
 
 }

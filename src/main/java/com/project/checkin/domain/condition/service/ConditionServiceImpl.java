@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class ConditionServiceImpl implements ConditionService{
+
     ConditionRepository conditionRepository;
     UserSecurity userSecurity;
     ConditionMapper conditionMapper;
@@ -34,4 +35,5 @@ public class ConditionServiceImpl implements ConditionService{
         }
         conditionRepository.save(conditionMapper.toCreate(condition));
     }
+
 }

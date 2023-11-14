@@ -38,5 +38,4 @@ public class ConditionEntity{
     @Column(nullable = false)
     private LocalDateTime endDateTime;
 
-
 }
