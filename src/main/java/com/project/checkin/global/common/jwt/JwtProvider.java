@@ -9,7 +9,13 @@ import com.project.checkin.domain.user.dto.User;
 import com.project.checkin.global.common.jwt.config.JwtProperties;
 import com.project.checkin.global.common.jwt.enums.JwtType;
 import com.project.checkin.global.security.auth.principal.CustomUserDetails;
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Header;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.UnsupportedJwtException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +28,7 @@ import java.util.Date;
 @Component
 @RequiredArgsConstructor
 public class JwtProvider {
+
     private final JwtProperties jwtProperties;
     private final UserRepository userRepository;
     private final UserMapper userMapper;

@@ -10,20 +10,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@Setter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 @Table(name = "tb_condition")
-@SuperBuilder
-public class ConditionEntity {
+public class ConditionEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +35,7 @@ public class ConditionEntity {
     @Enumerated(EnumType.STRING)
     private Feels todayFeels;
 
-    private LocalDate endDate;
+    @Column(nullable = false)
+    private LocalDateTime endDateTime;
 
 }

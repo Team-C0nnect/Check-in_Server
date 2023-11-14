@@ -11,11 +11,11 @@ import lombok.Getter;
 public class MovieResponse {
 
     private String title;
-
-    public static MovieResponse of(MovieEntity movie){
-        return MovieResponse.builder()
-                .title(movie.getTitle())
-                .build();
-    }
+//
+//    public static MovieResponse of(MovieEntity movie){
+//        return MovieResponse.builder()
+//                .title(movie.getTitle())
+//                .build();
+//    }
 
 }

@@ -6,6 +6,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 public class ConditionRequest {
@@ -13,7 +15,7 @@ public class ConditionRequest {
     private Long userId;
     private Feels feels;
 
-    Condition toCondition(){
+    public Condition toCondition(){
         return Condition.builder()
                 .userId(this.userId)
                 .todayFeels(this.feels)

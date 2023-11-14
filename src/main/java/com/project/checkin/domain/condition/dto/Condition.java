@@ -7,15 +7,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class Condition {
+
     private Long id;
     private Long userId;
     private Feels todayFeels;
-    private LocalDate endDate;
+
+    private LocalDateTime endDateTime;
+
 }

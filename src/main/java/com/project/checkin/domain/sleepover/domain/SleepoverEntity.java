@@ -15,11 +15,12 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_sleepover")
 @Getter
-@Setter
+//@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuperBuilder
 public class SleepoverEntity extends BaseTimeEntity {
@@ -28,14 +29,14 @@ public class SleepoverEntity extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private Long userId;
 
-    @Column(nullable = false)
-    private LocalDate startDate;
+    @Column(nullable=false)
+    private LocalDateTime startDateTime;
 
-    @Column(nullable = false)
-    private LocalDate endDate;
+    @Column(nullable=false)
+    private LocalDateTime endDateTime;
 
     @Column(nullable = false)
     private String reason;

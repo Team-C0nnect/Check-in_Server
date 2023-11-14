@@ -5,7 +5,6 @@ import com.project.checkin.domain.sleepover.domain.enums.SleepoverStatus;
 import com.project.checkin.domain.sleepover.dto.Sleepover;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Component
@@ -15,20 +14,21 @@ public class SleepoverMapper {
                 .id(entity.getId())
                 .reason(entity.getReason())
                 .approval(entity.getApproval())
-                .createdDate(LocalDate.from(entity.getCreatedDateTime()))
-                .modifiedDate(LocalDate.from(entity.getModifiedDateTime()))
+                .createdDate(LocalDateTime.from(entity.getCreatedDateTime()))
+                .modifiedDate(LocalDateTime.from(entity.getModifiedDateTime()))
                 .build();
     }
 
-    public SleepoverEntity toCreate(Long id, Long userId, LocalDate startDate, LocalDate endDate, String reason){
+    public SleepoverEntity toCreate(Sleepover sleepover){
         return SleepoverEntity.builder()
-                .id(id)
-                .userId(userId)
-                .startDate(startDate)
-                .endDate(endDate)
+                .userId(sleepover.getUserId())
+                .startDateTime(sleepover.getStartDateTime())
+                .endDateTime(sleepover.getEndDateTime())
                 .approval(SleepoverStatus.SLEEPOVER_WAITING)
                 .createdDateTime(LocalDateTime.now())
                 .modifiedDateTime(LocalDateTime.now())
                 .build();
     }
+
+
 }

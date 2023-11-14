@@ -13,11 +13,4 @@ public class ConditionResponse {
     private Long userId;
     private Feels feels;
 
-    public static ConditionResponse of(ConditionEntity condition){
-        return ConditionResponse.builder()
-                .userId(condition.getUserId())
-                .feels(condition.getTodayFeels())
-                .build();
-    }
-
 }

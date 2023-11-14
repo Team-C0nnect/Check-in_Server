@@ -6,18 +6,24 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 public class SleepoverRequest {
 
     @Schema(description = "외박자")
-    private String userId;
+    private Long userId;
     private String reason;
     private SleepoverStatus approval;
+    private LocalDateTime startDateTime;
+    private LocalDateTime endDateTime;
 
-    Sleepover toSleepover() {
+    public Sleepover toSleepover() {
         return Sleepover.builder()
                 .userId(this.userId)
+                .startDateTime(startDateTime)
+                .endDateTime(endDateTime)
                 .reason(this.reason)
                 .approval(this.approval)
                 .build();

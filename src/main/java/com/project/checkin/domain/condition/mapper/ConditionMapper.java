@@ -1,12 +1,11 @@
 package com.project.checkin.domain.condition.mapper;
 
 import com.project.checkin.domain.condition.domain.ConditionEntity;
-import com.project.checkin.domain.condition.domain.enums.Feels;
 import com.project.checkin.domain.condition.dto.Condition;
-import com.project.checkin.domain.sleepover.domain.enums.SleepoverStatus;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Component
 public class ConditionMapper {
@@ -16,16 +15,15 @@ public class ConditionMapper {
                 .id(entity.getId())
                 .userId(entity.getUserId())
                 .todayFeels(entity.getTodayFeels())
-                .endDate(entity.getEndDate())
+                .endDateTime(entity.getEndDateTime())
                 .build();
     }
 
-    public ConditionEntity toCreate(Long id, Long userId, Feels feels){
+    public ConditionEntity toCreate(Condition condition){
         return ConditionEntity.builder()
-                .id(id)
-                .userId(userId)
-                .todayFeels(feels)
-                .endDate(LocalDate.now())
+                .userId(condition.getUserId())
+                .todayFeels(condition.getTodayFeels())
+                .endDateTime(LocalDateTime.now())
                 .build();
     }
 }

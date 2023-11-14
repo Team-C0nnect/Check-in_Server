@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface SleepoverRepository extends JpaRepository<SleepoverEntity,Long> {
-    Optional<SleepoverEntity> findByUserId(UserEntity userId);
+  
+    Optional<SleepoverEntity> findById(Long userId);
+
     boolean existsByUserId(Long userId);
 }

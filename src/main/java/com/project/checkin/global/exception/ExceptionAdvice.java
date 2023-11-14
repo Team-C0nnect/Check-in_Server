@@ -27,5 +27,4 @@ public class ExceptionAdvice {
         return new ResponseEntity<ErrorResponse>(response, ex.getError().getStatus());
     }
 
-
 }

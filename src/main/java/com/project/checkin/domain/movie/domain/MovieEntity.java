@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name = "tb_movie")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
 public class MovieEntity extends BaseTimeEntity {
 
     @Id
