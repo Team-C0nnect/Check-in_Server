@@ -18,12 +18,12 @@ class JwtProviderTests {
     private UserMapper userMapper;
     @Test
     void generateTokenTest() {
-//        String email = "vectorscope0807@dgsw.hs.kr";
-//        User user = userRepository.findByEmail(email).map(userMapper::toUser).orElse(null);
-//        System.out.println(jwtProvider.generateAccessToken(user.getEmail(), user.getUserRole()));
-//        System.out.println(jwtProvider.generateRefreshToken(user.getEmail(), user.getUserRole()));
-        System.out.println(jwtProvider.generateAccessToken("vectorscope0807@dgsw.hs.kr", UserRole.USER));
-        System.out.println(jwtProvider.generateRefreshToken("vectorscope0807@dgsw.hs.kr", UserRole.USER));
+////        String email = "vectorscope0807@dgsw.hs.kr";
+////        User user = userRepository.findByEmail(email).map(userMapper::toUser).orElse(null);
+////        System.out.println(jwtProvider.generateAccessToken(user.getEmail(), user.getUserRole()));
+////        System.out.println(jwtProvider.generateRefreshToken(user.getEmail(), user.getUserRole()));
+//        System.out.println(jwtProvider.generateAccessToken("vectorscope0807@dgsw.hs.kr", UserRole.USER));
+//        System.out.println(jwtProvider.generateRefreshToken("vectorscope0807@dgsw.hs.kr", UserRole.USER));
     }
 
 }
