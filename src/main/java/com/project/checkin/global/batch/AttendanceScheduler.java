@@ -24,7 +24,7 @@ public class AttendanceScheduler {
     private final JobLauncher jobLauncher;
     private final Job checkAttendanceJob;
 
-    @Scheduled(cron = "0 0 22 * * *", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 */5 * * * *", zone = "Asia/Seoul")
     public void attendance() throws Exception {
         final JobParameters parameters = new JobParametersBuilder()
                 .addLong("time", System.currentTimeMillis())
