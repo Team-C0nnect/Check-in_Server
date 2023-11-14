@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -15,7 +17,7 @@ public class LeaveQueryServiceImpl implements LeaveQueryService{
     private final LeaveQueryRepository queryRepository;
 
     @Override
-    public Page<LeaveResponse> findLeaves(PageRequest pageRequest) {
-        return queryRepository.findLeaves(pageRequest.getPageable());
+    public List<LeaveResponse> findLeaves(PageRequest pageRequest) {
+        return queryRepository.findLeaves(pageRequest);
     }
 }

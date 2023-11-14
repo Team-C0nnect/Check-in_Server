@@ -2,6 +2,7 @@ package com.project.checkin.domain.sleepover.domain.repository.querydsl;
 
 import com.project.checkin.domain.sleepover.domain.enums.SleepoverStatus;
 import com.project.checkin.domain.sleepover.dto.response.SleepoverResponse;
+import com.project.checkin.global.common.dto.request.PageRequest;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 
@@ -25,25 +26,17 @@ public class SleepoverQueryRepositoryImpl implements SleepoverQueryRepository{
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public Page<SleepoverResponse> findAcceptedStudents(Pageable pageable, SleepoverStatus sleepoverStatus){
-        List<SleepoverResponse> result = queryFactory
+    public List<SleepoverResponse> findAcceptedStudents(PageRequest request, SleepoverStatus sleepoverStatus){
+        return queryFactory
                 .select(sleepoverProjection())
                 .from(sleepoverEntity)
                 .where(
                         eqApproval(sleepoverStatus)
                 )
                 .orderBy(sleepoverEntity.id.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
+                .offset((request.getPage() - 1) * request.getSize())
+                .limit(request.getSize())
                 .fetch();
-
-        JPAQuery<Long> count = queryFactory.select(sleepoverEntity.id.count())
-                .from(sleepoverEntity)
-                .where(
-                        eqApproval(sleepoverStatus)
-                );
-
-        return PageableExecutionUtils.getPage(result, pageable, count::fetchOne);
     }
 
 

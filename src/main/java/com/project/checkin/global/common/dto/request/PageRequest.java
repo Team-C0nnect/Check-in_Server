@@ -3,7 +3,6 @@ package com.project.checkin.global.common.dto.request;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.domain.Pageable;
 
 @Getter
 @Setter
@@ -20,9 +19,8 @@ public class PageRequest {
         size = 10;
     }
 
-    public Pageable getPageable(){
-        return org.springframework.data.domain.PageRequest.of(page-1, size);
+    public PageRequest(int page, int size) {
+        this.page = page;
+        this.size = size;
     }
-
-
 }

@@ -5,6 +5,7 @@ import com.project.checkin.domain.sleepover.dto.request.SleepoverRequest;
 import com.project.checkin.domain.sleepover.dto.request.SleepoverSettingRequest;
 import com.project.checkin.domain.sleepover.service.SleepoverService;
 import com.project.checkin.domain.sleepover.service.querydsl.SleepoverQueryService;
+import com.project.checkin.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -39,8 +40,8 @@ public class SleepoverController {
 
     @Operation(summary = "승인 외박 조회", description = "")
     @GetMapping("/findAcceptedStudents")
-    public ResponseEntity<Sleepover> findAcceptedStudents(SleepoverRequest request) {
-        return ResponseEntity.ok((Sleepover) querydslService.findSleepoverStudents(Pageable.unpaged(), request.getApproval()));
+    public ResponseEntity<Sleepover> findAcceptedStudents(SleepoverRequest request, PageRequest pageRequest) {
+        return ResponseEntity.ok((Sleepover) querydslService.findSleepoverStudents(pageRequest, request.getApproval()));
     }
 
     @Operation(summary = "외박 신청")

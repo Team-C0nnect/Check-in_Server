@@ -15,6 +15,8 @@ import org.springframework.security.access.method.P;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/leave")
@@ -34,7 +36,7 @@ public class LeaveController {
     }
 
     @GetMapping("")
-    public Page<LeaveResponse> findLeaves(PageRequest request){
+    public List<LeaveResponse> findLeaves(PageRequest request){
         return leaveQueryService.findLeaves(request);
     }
 }
