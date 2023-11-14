@@ -28,8 +28,7 @@ public class ConditionServiceImpl implements ConditionService{
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void
-    registerMyFeels(Condition condition) {
+    public void registerMyFeels(Condition condition) {
         if(conditionRepository.findByUserIdAndEndDateTime(condition.getUserId(),condition.getEndDateTime()).isPresent()){
             throw ConditionAlreadyDidException.EXCEPTION;
         }

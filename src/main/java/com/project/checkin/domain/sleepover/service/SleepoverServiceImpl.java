@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(rollbackFor = Exception.class)
 public class SleepoverServiceImpl implements SleepoverService {
 
     private final SleepoverRepository sleepoverRepository;
@@ -22,7 +23,6 @@ public class SleepoverServiceImpl implements SleepoverService {
     private final SleepoverMapper sleepoverMapper;
     private SleepoverEntity sleepover;
 
-    @Transactional(rollbackFor = Exception.class)
     @Override
     public Sleepover find() {
         return sleepoverRepository
@@ -31,7 +31,7 @@ public class SleepoverServiceImpl implements SleepoverService {
 
                 .orElseThrow(() -> SleepoverNotFoundException.EXCEPTION);
     }
-    @Transactional(rollbackFor = Exception.class)
+
     @Override
     public void registerSleepover(Sleepover sleepover) {
         if (sleepoverRepository.findById(userSecurity.getUser().getId()).isPresent()) {
@@ -40,7 +40,6 @@ public class SleepoverServiceImpl implements SleepoverService {
         sleepoverRepository.save(sleepoverMapper.toCreate(sleepover));
     }
 
-    @Transactional(rollbackFor = Exception.class)
     @Override
     public void refuseSleepover(Long sleepoverId) {
 
@@ -49,7 +48,7 @@ public class SleepoverServiceImpl implements SleepoverService {
         sleepoverRepository.save(sleepoverMapper.toCreate(sleepover));
 
     }
-    @Transactional(rollbackFor = Exception.class)
+
     @Override
     public void acceptSleepover(Long sleepoverId){
 
@@ -57,4 +56,5 @@ public class SleepoverServiceImpl implements SleepoverService {
         sleepover.setApproval(SleepoverStatus.SLEEPOVER_ACCEPTED);
         sleepoverRepository.save(sleepoverMapper.toCreate(sleepover));
     }
+
 }

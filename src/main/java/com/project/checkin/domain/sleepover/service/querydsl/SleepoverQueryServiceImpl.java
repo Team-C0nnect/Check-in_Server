@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class SleepoverQueryServiceImpl implements SleepoverQueryService {
     SleepoverQueryRepositoryImpl queryRepository;
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional(readOnly = true)
     @Override
     public Page<SleepoverResponse> findSleepoverStudents(Pageable pageable, SleepoverStatus sleepoverStatus) {
         return queryRepository.findAcceptedStudents(pageable, sleepoverStatus);
