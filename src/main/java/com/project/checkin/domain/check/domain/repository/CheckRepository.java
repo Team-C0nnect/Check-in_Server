@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface CheckRepository extends JpaRepository<CheckEntity, Long> {
     Optional<CheckEntity> findByUserIdAndCheckDate(Long userId, LocalDate date);
-    
+
 }

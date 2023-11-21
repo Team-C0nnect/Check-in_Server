@@ -12,4 +12,6 @@ public interface CheckCodeRepository extends JpaRepository<CheckCodeEntity, Long
     @Query("UPDATE CheckCodeEntity c SET c.valid=false WHERE c.userId=:userId")
     int updateAllInvalidCheckCode(@Param("userId") Long userId);
 
+    boolean existsByCodeAndValid(String code, boolean valid);
+
 }

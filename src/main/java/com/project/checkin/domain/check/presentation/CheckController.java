@@ -1,6 +1,7 @@
 package com.project.checkin.domain.check.presentation;
 
 import com.project.checkin.domain.check.dto.Check;
+import com.project.checkin.domain.check.dto.request.CodeRequest;
 import com.project.checkin.domain.check.dto.response.CheckCodeResponse;
 import com.project.checkin.domain.check.service.CheckCodeService;
 import com.project.checkin.domain.check.service.CheckService;
@@ -32,10 +33,9 @@ public class CheckController {
 
     @Operation(summary = "출석 체크", description = "출석 체크")
     @PostMapping("")
-    public void attendanceCheck() {
-        checkService.attendance();
+    public void attendanceCheck(CodeRequest codeRequest) {
+        checkService.attendance(codeRequest);
     }
-
 
     @Operation(summary = "출석 명단", description = "출석 명단을 표시합니다")
     @GetMapping("/list")
