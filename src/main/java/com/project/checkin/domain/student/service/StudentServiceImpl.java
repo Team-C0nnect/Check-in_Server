@@ -2,6 +2,7 @@ package com.project.checkin.domain.student.service;
 
 import com.project.checkin.domain.student.domain.repository.StudentRepository;
 import com.project.checkin.domain.student.dto.Student;
+import com.project.checkin.domain.student.dto.request.StudentEditRequest;
 import com.project.checkin.domain.student.dto.request.StudentRequest;
 import com.project.checkin.domain.student.exception.StudentAlreadyExistsException;
 import com.project.checkin.domain.student.exception.StudentNotFoundException;
@@ -35,8 +36,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void studentEdit(StudentRequest studentRequest) {
+    public void studentEdit(StudentEditRequest studentEditRequest) {
 
+        Student student = studentRepository.findById(userSecurity.getUser().getId())
+                .map(studentMapper::toStudent).orElseThrow(() -> StudentNotFoundException.EXCEPTION);
+        student.setStdId(studentEditRequest.getStdId());
+        studentRepository.save(studentMapper.toCreate(userSecurity.getUser().getId(), studentEditRequest.getStdId()));
     }
 
 }

@@ -1,4 +1,5 @@
 package com.project.checkin.global.config;
+
 import com.project.checkin.global.common.jwt.filter.JwtAuthenticationFilter;
 import com.project.checkin.global.common.jwt.filter.JwtExceptionFilter;
 import com.project.checkin.global.common.jwt.handler.JwtAuthenticationEntryPoint;
