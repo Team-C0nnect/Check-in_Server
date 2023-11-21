@@ -34,6 +34,7 @@ public class SecurityConfig {
                                     .requestMatchers("/condition-admin/**").hasAnyAuthority("ADMIN","MANAGER")
                                     .requestMatchers("/sleepover-admin/**").hasAnyAuthority("ADMIN","MANAGER")
                                     .requestMatchers("/leave/**").hasAnyAuthority("ADMIN","MANAGER")
+                                    .requestMatchers("/attendance/code").permitAll()
                                     .anyRequest()
                                     .authenticated()
                 )

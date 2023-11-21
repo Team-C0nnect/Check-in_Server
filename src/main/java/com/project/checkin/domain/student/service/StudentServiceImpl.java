@@ -17,6 +17,7 @@ public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
     private final UserSecurity userSecurity;
     private final StudentMapper studentMapper;
+
     @Override
     public Student findStudent(){
         return studentRepository
@@ -32,4 +33,10 @@ public class StudentServiceImpl implements StudentService {
         }
         studentRepository.save(studentMapper.toCreate(userSecurity.getUser().getId(), studentRequest.getStdId()));
     }
+
+    @Override
+    public void studentEdit(StudentRequest studentRequest) {
+
+    }
+
 }
