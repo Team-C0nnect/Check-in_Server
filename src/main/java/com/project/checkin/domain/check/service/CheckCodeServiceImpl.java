@@ -20,7 +20,7 @@ public class CheckCodeServiceImpl implements CheckCodeService {
 
     @Override
     public CheckCodeResponse generate() {
-        CheckCodeEntity checkCodeEntity = checkCodeRepository.save(checkCodeMapper.createCheckCodeEntity(userSecurity.getUser().getId()));
+        CheckCodeEntity checkCodeEntity = checkCodeRepository.save(checkCodeMapper.createCheckCodeEntity(1L));
         return CheckCodeResponse.builder().code(checkCodeEntity.getCode()).build();
     }
 
