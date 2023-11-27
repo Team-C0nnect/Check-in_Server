@@ -5,6 +5,7 @@ import com.project.checkin.domain.check.domain.repository.CheckCodeRepository;
 import com.project.checkin.domain.check.domain.repository.CheckRepository;
 import com.project.checkin.domain.check.dto.request.CodeRequest;
 import com.project.checkin.domain.check.exception.CheckAlreadyExistsException;
+import com.project.checkin.domain.check.exception.CheckCodeError;
 import com.project.checkin.domain.check.mapper.CheckMapper;
 import com.project.checkin.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +33,7 @@ public class CheckServiceImpl implements CheckService {
 
         if(checkCodeRepository.existsByCodeAndValid(codeRequest.getCode(),true)){
             checkRepository.save(checkEntity);
-        }
+        }throw CheckCodeError.EXCEPTION;
 
     }
 
