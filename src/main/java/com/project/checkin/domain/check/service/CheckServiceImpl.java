@@ -33,7 +33,9 @@ public class CheckServiceImpl implements CheckService {
 
         if(checkCodeRepository.existsByCodeAndValid(codeRequest.getCode(),true)){
             checkRepository.save(checkEntity);
-        }throw CheckCodeError.EXCEPTION;
+        }else{
+            throw CheckCodeError.EXCEPTION;
+        }
 
     }
 
