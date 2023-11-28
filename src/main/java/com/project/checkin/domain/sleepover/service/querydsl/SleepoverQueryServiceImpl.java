@@ -2,6 +2,8 @@ package com.project.checkin.domain.sleepover.service.querydsl;
 
 import com.project.checkin.domain.sleepover.domain.enums.SleepoverStatus;
 import com.project.checkin.domain.sleepover.domain.repository.querydsl.SleepoverQueryRepositoryImpl;
+import com.project.checkin.domain.sleepover.dto.Sleepover;
+import com.project.checkin.domain.sleepover.dto.request.SleepoverPageRequest;
 import com.project.checkin.domain.sleepover.dto.response.SleepoverResponse;
 import com.project.checkin.global.common.dto.request.PageRequest;
 import lombok.RequiredArgsConstructor;
@@ -15,11 +17,11 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class SleepoverQueryServiceImpl implements SleepoverQueryService {
-    SleepoverQueryRepositoryImpl queryRepository;
+    private final SleepoverQueryRepositoryImpl queryRepository;
 
     @Transactional(readOnly = true)
     @Override
-    public List<SleepoverResponse> findSleepoverStudents(PageRequest request, SleepoverStatus sleepoverStatus) {
-        return queryRepository.findAcceptedStudents(request, sleepoverStatus);
+    public List<Sleepover> findSleepoverStudents(SleepoverPageRequest request) {
+        return queryRepository.findStudents(request);
     }
 }

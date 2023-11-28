@@ -10,6 +10,7 @@ public enum Feels {
     BAD("FEELS_BAD"),
     SAD("FEELS_SAD"),
     ANGRY("FEELS_ANGRY"),
+    SICK("FEELS_SICK"),
     PERFECT("FEELS_PERFECT");
     private final String key;
 }

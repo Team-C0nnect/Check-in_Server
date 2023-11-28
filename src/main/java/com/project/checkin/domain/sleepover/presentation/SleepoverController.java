@@ -30,19 +30,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class SleepoverController {
 
     private final SleepoverService sleepoverService;
-    private final SleepoverQueryService querydslService;
-
-    @Operation(summary = "전체 외박 조회", description = "")
-    @GetMapping("/findAllStudents")
-    public ResponseEntity<Sleepover> findAllStudents() {
-        return ResponseEntity.ok(sleepoverService.find());
-    }
-
-    @Operation(summary = "승인 외박 조회", description = "")
-    @GetMapping("/findAcceptedStudents")
-    public ResponseEntity<Sleepover> findAcceptedStudents(SleepoverRequest request, PageRequest pageRequest) {
-        return ResponseEntity.ok((Sleepover) querydslService.findSleepoverStudents(pageRequest, request.getApproval()));
-    }
 
     @Operation(summary = "외박 신청")
     @PostMapping("/")
@@ -51,17 +38,4 @@ public class SleepoverController {
         sleepoverService.registerSleepover(request.toSleepover());
     }
 
-    @Operation(summary = "외박 거절")
-    @PutMapping("/refuse")
-    @ResponseStatus(HttpStatus.OK)
-    public void refuseSleepover(@Validated @RequestBody SleepoverSettingRequest request){
-        sleepoverService.refuseSleepover(request.getSleepoverId());
-    }
-
-    @Operation(summary = "외박 승인")
-    @PutMapping("/accept")
-    @ResponseStatus(HttpStatus.OK)
-    public void acceptSleepover(@Validated @RequestBody SleepoverSettingRequest request){
-        sleepoverService.acceptSleepover(request.getSleepoverId());
-    }
 }

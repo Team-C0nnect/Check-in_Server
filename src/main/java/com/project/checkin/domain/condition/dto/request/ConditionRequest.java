@@ -12,12 +12,11 @@ import java.time.LocalDateTime;
 @Setter
 public class ConditionRequest {
     @Schema(description = "컨디션 상태")
-    private Long userId;
     private Feels feels;
 
     public Condition toCondition(){
         return Condition.builder()
-                .userId(this.userId)
+//                .userId(this.userId)
                 .todayFeels(this.feels)
                 .build();
     }

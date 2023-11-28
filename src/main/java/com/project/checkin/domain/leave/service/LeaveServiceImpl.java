@@ -27,7 +27,7 @@ public class LeaveServiceImpl implements LeaveService{
 
     @Override
     public void removeLeaveWeek(Long leaveId){
-        if(leaveRepository.findById(leaveId).isPresent()){
+        if(leaveRepository.findById(leaveId).isEmpty()){
             throw LeaveAlreadyDeletedException.EXCEPTION;
         }
         else{
