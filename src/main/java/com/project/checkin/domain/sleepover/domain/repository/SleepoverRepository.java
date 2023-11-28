@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface SleepoverRepository extends JpaRepository<SleepoverEntity,Long> {
   
-    Optional<SleepoverEntity> findById(Long userId);
+    Optional<SleepoverEntity> findById(Long sleepoverId);
 
-    boolean existsByUserId(Long userId);
+    Optional<SleepoverEntity> findByUserId(Long userId);
 }

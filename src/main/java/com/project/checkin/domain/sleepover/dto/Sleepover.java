@@ -32,4 +32,5 @@ public class Sleepover {
     private LocalDateTime createdDate;
 
     private LocalDateTime modifiedDate;
+
 }

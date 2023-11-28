@@ -15,11 +15,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class Condition {
-
     private Long id;
     private Long userId;
     private Feels todayFeels;
-
     private LocalDateTime endDateTime;
-
 }

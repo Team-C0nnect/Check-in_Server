@@ -1,18 +1,13 @@
 package com.project.checkin.domain.sleepover.domain.repository.querydsl;
 
 import com.project.checkin.domain.sleepover.domain.enums.SleepoverStatus;
-import com.project.checkin.domain.sleepover.dto.response.SleepoverResponse;
-import com.project.checkin.global.common.dto.request.PageRequest;
+import com.project.checkin.domain.sleepover.dto.Sleepover;
+import com.project.checkin.domain.sleepover.dto.request.SleepoverPageRequest;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
-
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,25 +21,36 @@ public class SleepoverQueryRepositoryImpl implements SleepoverQueryRepository{
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<SleepoverResponse> findAcceptedStudents(PageRequest request, SleepoverStatus sleepoverStatus){
+    public List<Sleepover> findStudents(SleepoverPageRequest request){
         return queryFactory
                 .select(sleepoverProjection())
                 .from(sleepoverEntity)
                 .where(
-                        eqApproval(sleepoverStatus)
+                        inStatus(request.getSleepoverStatuses())
                 )
-                .orderBy(sleepoverEntity.id.desc())
                 .offset((request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
+                .orderBy(sleepoverEntity.id.asc())
                 .fetch();
     }
 
 
-    private ConstructorExpression<SleepoverResponse> sleepoverProjection() {
-        return Projections.constructor(SleepoverResponse.class, sleepoverEntity.id, sleepoverEntity.approval);
+    private ConstructorExpression<Sleepover> sleepoverProjection() {
+        return Projections.constructor(Sleepover.class,
+                sleepoverEntity.id,
+                sleepoverEntity.userId,
+                sleepoverEntity.startDateTime,
+                sleepoverEntity.endDateTime,
+                sleepoverEntity.reason,
+                sleepoverEntity.approval,
+                sleepoverEntity.createdDateTime,
+                sleepoverEntity.modifiedDateTime);
     }
 
-    private BooleanExpression eqApproval(SleepoverStatus sleepoverStatus) {
-        return sleepoverEntity.approval.eq(sleepoverStatus);
+    private BooleanExpression inStatus(List<SleepoverStatus> statuses) {
+        if(statuses.isEmpty()){
+            return null;
+        }
+        return sleepoverEntity.approval.in(statuses);
     }
 }

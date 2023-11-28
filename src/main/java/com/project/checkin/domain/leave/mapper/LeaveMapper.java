@@ -9,10 +9,12 @@ import java.time.LocalDateTime;
 
 @Component
 public class LeaveMapper {
+
     public LeaveEntity toCreate(Leave leave){
         return LeaveEntity.builder()
                 .id(leave.getId())
                 .leaveDate(leave.getLeaveDate())
                 .build();
     }
+
 }

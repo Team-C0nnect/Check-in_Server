@@ -32,8 +32,8 @@ public class SecurityConfig {
                                     .requestMatchers("/auth/**").permitAll()
 //                                    .requestMatchers(String.valueOf(UserRole.USER)).permitAll()
 //                                    .requestMatchers("/").permitAll()
-                                    .requestMatchers("/condition-admin/**").hasAnyAuthority("ADMIN","MANAGER")
-                                    .requestMatchers("/sleepover-admin/**").hasAnyAuthority("ADMIN","MANAGER")
+//                                    .requestMatchers("/condition-admin/**").hasAnyAuthority("ADMIN","MANAGER")
+                                   // .requestMatchers("/sleepover-admin/**").hasAnyAuthority("ADMIN","MANAGER")
                                     .requestMatchers("/leave/**").hasAnyAuthority("ADMIN","MANAGER")
                                     .requestMatchers("/attendance/code").permitAll()
                                     .anyRequest()
@@ -44,6 +44,5 @@ public class SecurityConfig {
 
         return http.build();
     }
-
 
 }

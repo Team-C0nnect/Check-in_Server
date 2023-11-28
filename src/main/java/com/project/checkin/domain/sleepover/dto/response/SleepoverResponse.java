@@ -10,6 +10,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class SleepoverResponse {
-    private Long userId;
+    //    private Long userId;
+    private Long id;
     private SleepoverStatus approval;
 }

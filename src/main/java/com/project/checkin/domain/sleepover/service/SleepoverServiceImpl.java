@@ -4,7 +4,6 @@ import com.project.checkin.domain.sleepover.domain.SleepoverEntity;
 import com.project.checkin.domain.sleepover.domain.enums.SleepoverStatus;
 import com.project.checkin.domain.sleepover.domain.repository.SleepoverRepository;
 import com.project.checkin.domain.sleepover.dto.Sleepover;
-import com.project.checkin.domain.sleepover.dto.request.SleepoverRequest;
 import com.project.checkin.domain.sleepover.exception.SleepoverAlreadyExistsException;
 import com.project.checkin.domain.sleepover.exception.SleepoverNotFoundException;
 import com.project.checkin.domain.sleepover.mapper.SleepoverMapper;
@@ -21,20 +20,21 @@ public class SleepoverServiceImpl implements SleepoverService {
     private final SleepoverRepository sleepoverRepository;
     private final UserSecurity userSecurity;
     private final SleepoverMapper sleepoverMapper;
-    private SleepoverEntity sleepover;
+//    private SleepoverEntity sleepover;
 
-    @Override
-    public Sleepover find() {
-        return sleepoverRepository
-                .findById(sleepover.getId())
-                .map(sleepoverMapper::toSleepover)
-
-                .orElseThrow(() -> SleepoverNotFoundException.EXCEPTION);
-    }
-
+//    @Override
+//    public Sleepover find() {
+//        return sleepoverRepository.findAll()
+//        return sleepoverRepository
+//
+//                .findById(this.sleepover.getId())
+//                .map(sleepoverMapper::toSleepover)
+//
+//                .orElseThrow(() -> SleepoverNotFoundException.EXCEPTION);
+//    }
     @Override
     public void registerSleepover(Sleepover sleepover) {
-        if (sleepoverRepository.findById(userSecurity.getUser().getId()).isPresent()) {
+        if (sleepoverRepository.findByUserId(userSecurity.getUser().getId()).isPresent()) {
             throw SleepoverAlreadyExistsException.EXCEPTION;
         }
         sleepoverRepository.save(sleepoverMapper.toCreate(sleepover));
@@ -45,16 +45,15 @@ public class SleepoverServiceImpl implements SleepoverService {
 
         Sleepover sleepover = sleepoverRepository.findById(sleepoverId).map(sleepoverMapper::toSleepover).orElseThrow(() -> SleepoverNotFoundException.EXCEPTION);
         sleepover.setApproval(SleepoverStatus.SLEEPOVER_REJECTED);
-        sleepoverRepository.save(sleepoverMapper.toCreate(sleepover));
+        sleepoverRepository.save(sleepoverMapper.toUpdate(sleepover));
 
     }
 
     @Override
     public void acceptSleepover(Long sleepoverId){
-
         Sleepover sleepover = sleepoverRepository.findById(sleepoverId).map(sleepoverMapper::toSleepover).orElseThrow(() -> SleepoverNotFoundException.EXCEPTION);
         sleepover.setApproval(SleepoverStatus.SLEEPOVER_ACCEPTED);
-        sleepoverRepository.save(sleepoverMapper.toCreate(sleepover));
+        sleepoverRepository.save(sleepoverMapper.toUpdate(sleepover));
     }
 
 }

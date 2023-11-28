@@ -23,4 +23,5 @@ public class PageRequest {
         this.page = page;
         this.size = size;
     }
+
 }

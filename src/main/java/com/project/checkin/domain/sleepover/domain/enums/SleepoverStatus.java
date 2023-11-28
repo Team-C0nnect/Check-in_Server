@@ -6,9 +6,8 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum SleepoverStatus {
-    SLEEPOVER_ACCEPTED("승인 됨"),
-    SLEEPOVER_REJECTED("거절 됨"),
-    SLEEPOVER_WAITING("대기 중");
-
+    SLEEPOVER_ACCEPTED("ACCEPTED"),
+    SLEEPOVER_REJECTED("REJECTED"),
+    SLEEPOVER_WAITING("WAITING");
     private final String key;
 }

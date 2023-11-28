@@ -9,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,9 +23,10 @@ import java.time.LocalDateTime;
 @Table(name = "tb_sleepover")
 @Getter
 //@Setter
+//@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuperBuilder
-public class SleepoverEntity extends BaseTimeEntity {
+public class SleepoverEntity extends BaseTimeEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
