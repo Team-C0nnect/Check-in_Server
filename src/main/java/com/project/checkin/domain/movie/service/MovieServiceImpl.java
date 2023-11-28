@@ -26,4 +26,6 @@ public class MovieServiceImpl implements MovieService {
         movieRepository.save(movieMapper.createMovieEntity(userSecurity.getUser().getId(), movie));
     }
 
+
+
 }

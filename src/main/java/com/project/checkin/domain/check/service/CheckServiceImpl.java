@@ -9,6 +9,7 @@ import com.project.checkin.domain.check.exception.CheckCodeError;
 import com.project.checkin.domain.check.mapper.CheckMapper;
 import com.project.checkin.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -31,12 +32,17 @@ public class CheckServiceImpl implements CheckService {
             throw CheckAlreadyExistsException.EXCEPTION;
         }
 
-        if(checkCodeRepository.existsByCodeAndValid(codeRequest.getCode(),true)){
+        if (checkCodeRepository.existsByCodeAndValid(codeRequest.getCode(), true)) {
             checkRepository.save(checkEntity);
-        }else{
+        } else {
             throw CheckCodeError.EXCEPTION;
         }
 
+    }
+
+    @Override
+    public ResponseEntity<Void> attendanceCheck() {
+        return (checkRepository.existsById(userSecurity.getUser().getId())) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
 }

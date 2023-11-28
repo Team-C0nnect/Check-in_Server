@@ -48,4 +48,11 @@ public class CheckController {
     public ResponseEntity<CheckCodeResponse> generateCheckCode() {
         return ResponseEntity.status(HttpStatus.CREATED).body(checkCodeService.generate());
     }
+
+    @Operation(summary = "출석 확인", description = "출석 상태를 확인합니다")
+    @GetMapping("/confirm")
+    public ResponseEntity attendanceCheck(){
+        return checkService.attendanceCheck();
+    }
+
 }
