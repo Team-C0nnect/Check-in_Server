@@ -31,9 +31,9 @@ public class SecurityConfig {
                                     .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
                                     .requestMatchers("/auth/**").permitAll()
 //                                    .requestMatchers(String.valueOf(UserRole.USER)).permitAll()
-//                                    .requestMatchers("/").permitAll()
-//                                    .requestMatchers("/condition-admin/**").hasAnyAuthority("ADMIN","MANAGER")
-                                   // .requestMatchers("/sleepover-admin/**").hasAnyAuthority("ADMIN","MANAGER")
+//                                    .requestMatchers("/").permitAll() -> 윤세욱 발자취
+                                    .requestMatchers("/condition-admin/**").hasAnyAuthority("ADMIN","MANAGER")
+                                    .requestMatchers("/sleepover-admin/**").hasAnyAuthority("ADMIN","MANAGER")
                                     .requestMatchers("/leave/**").hasAnyAuthority("ADMIN","MANAGER")
                                     .requestMatchers("/attendance/code").permitAll()
                                     .anyRequest()
