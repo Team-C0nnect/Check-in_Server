@@ -42,7 +42,10 @@ public class CheckServiceImpl implements CheckService {
 
     @Override
     public ResponseEntity<Void> attendanceCheck() {
-        return (checkRepository.existsById(userSecurity.getUser().getId())) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+        if (checkRepository.findByUserIdAndCheckDate(userSecurity.getUser().getId(),LocalDate.now()).isPresent()){
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }
