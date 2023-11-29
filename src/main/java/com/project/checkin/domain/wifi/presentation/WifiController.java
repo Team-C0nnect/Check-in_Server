@@ -4,6 +4,7 @@ import com.project.checkin.domain.wifi.Service.WifiService;
 import com.project.checkin.domain.wifi.dto.request.WifiRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +23,10 @@ public class WifiController {
         wifiService.wifiRegister(wifiRequest);
     }
 
+    @Operation(summary = "와이파이 확인", description = "와이파이를 확인합니다")
     @GetMapping("")
-    public void wifiCheck(WifiRequest wifiRequest){
-        wifiService.wifiCheck(wifiRequest);
+    public ResponseEntity<Void> wifiCheck(WifiRequest wifiRequest){
+        return wifiService.wifiCheck(wifiRequest);
     }
 
 }
