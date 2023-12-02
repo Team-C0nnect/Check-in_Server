@@ -35,13 +35,6 @@ public class WifiServiceImpl implements WifiService{
         }
         return ResponseEntity.ok().build();
 
-    public boolean wifiCheck(WifiRequest wifiRequest){
-
-        if (wifiRepository.findBySsid(wifiRequest.getSsid()).isEmpty()){
-            throw WifiNotFoundException.EXCEPTION;
-        }
-        return true;
-
     }
 
 }
