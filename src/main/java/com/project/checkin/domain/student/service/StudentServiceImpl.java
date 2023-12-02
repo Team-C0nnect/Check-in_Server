@@ -44,4 +44,14 @@ public class StudentServiceImpl implements StudentService {
         studentRepository.save(studentMapper.toCreate(userSecurity.getUser().getId(), studentEditRequest.getStdId()));
     }
 
+    @Override
+    public void studentDelete(){
+
+        if(studentRepository.findById(userSecurity.getUser().getId()).isEmpty()){
+            throw StudentNotFoundException.EXCEPTION;
+        }
+        studentRepository.deleteById(userSecurity.getUser().getId());
+
+    }
+
 }

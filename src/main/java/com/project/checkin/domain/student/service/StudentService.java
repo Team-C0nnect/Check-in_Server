@@ -10,4 +10,5 @@ public interface StudentService {
     void register(StudentRequest studentRequest);
     void studentEdit(StudentEditRequest studentEditRequest);
 
+    void studentDelete();
 }

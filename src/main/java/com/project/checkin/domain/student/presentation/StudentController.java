@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -48,6 +49,11 @@ public class StudentController {
     @ResponseStatus(HttpStatus.OK)
     public void studentEdit(@Validated @RequestBody StudentEditRequest studentEditRequest){
         studentService.studentEdit(studentEditRequest);
+    }
+
+    @DeleteMapping("")
+    public void studentDelete(){
+        studentService.studentDelete();
     }
 
 }
