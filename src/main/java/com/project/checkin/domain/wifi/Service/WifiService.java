@@ -10,5 +10,4 @@ public interface WifiService {
 
     ResponseEntity<Void> wifiCheck(WifiRequest wifiRequest);
 
-
 }
