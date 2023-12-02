@@ -51,6 +51,7 @@ public class StudentController {
         studentService.studentEdit(studentEditRequest);
     }
 
+    @Operation(summary = "학번 삭제", description = "학번을 삭제합니다")
     @DeleteMapping("")
     public void studentDelete(){
         studentService.studentDelete();
