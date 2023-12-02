@@ -30,9 +30,7 @@ public class LeaveServiceImpl implements LeaveService{
         if(leaveRepository.findById(leaveId).isEmpty()){
             throw LeaveAlreadyDeletedException.EXCEPTION;
         }
-        else{
-            leaveRepository.deleteById(leaveId);
-        }
+        leaveRepository.deleteById(leaveId);
     }
-    
+
 }

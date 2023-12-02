@@ -12,18 +12,11 @@ import java.time.LocalDate;
 @Setter
 public class LeaveRegisterRequest {
 
-    private Long id;
-
-    @NotNull
-    private Long userId;
-
     @NotNull
     private LocalDate leaveDate;
 
     public Leave toLeave() {
         return Leave.builder()
-                .id(this.id)
-                .userId(this.userId)
                 .leaveDate(this.leaveDate)
                 .build();
     }
