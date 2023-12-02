@@ -8,9 +8,7 @@ public interface WifiService {
 
     void wifiRegister(WifiRequest wifiRequest);
 
-
     ResponseEntity<Void> wifiCheck(WifiRequest wifiRequest);
 
-    boolean wifiCheck(WifiRequest wifiRequest);
 
 }
