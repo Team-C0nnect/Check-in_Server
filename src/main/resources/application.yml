@@ -38,7 +38,7 @@ application:
   jwt:
     secretKey: 25432A462D4A614E645267556A586E3272357538782F413F4428472B4B625065
     expiration: 900000
-    refreshExpiration: 999999
+    refreshExpiration: 99999999
 
 firebase:
   sdk:
