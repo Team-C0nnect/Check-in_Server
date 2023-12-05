@@ -12,22 +12,22 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional(rollbackFor = Exception.class)
-public class LeaveServiceImpl implements LeaveService{
+public class LeaveServiceImpl implements LeaveService {
 
     private final LeaveRepository leaveRepository;
     private final LeaveMapper leaveMapper;
 
     @Override
     public void registerLeaveWeek(Leave leave) {
-        if(leaveRepository.findByLeaveDate(leave.getLeaveDate()).isPresent()) {
+        if (leaveRepository.findByLeaveDate(leave.getLeaveDate()).isPresent()) {
             throw LeaveAlreadySelectedException.EXCEPTION;
         }
         leaveRepository.save(leaveMapper.toCreate(leave));
     }
 
     @Override
-    public void removeLeaveWeek(Long leaveId){
-        if(leaveRepository.findById(leaveId).isEmpty()){
+    public void removeLeaveWeek(Long leaveId) {
+        if (leaveRepository.findById(leaveId).isEmpty()) {
             throw LeaveAlreadyDeletedException.EXCEPTION;
         }
         leaveRepository.deleteById(leaveId);

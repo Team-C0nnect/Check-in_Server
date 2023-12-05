@@ -1,10 +1,9 @@
 package com.project.checkin.domain.vote.service;
 
-import lombok.RequiredArgsConstructor;
+import com.project.checkin.domain.vote.dto.Vote;
 
 public interface VoteService {
 
-    void register(Long movieId);
-
+    void register(Vote vote);
 
 }

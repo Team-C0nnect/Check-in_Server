@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Getter
-public class MovieListEntity {
+public class MovieListEntity{
 
     @EmbeddedId
     private MovieListId id;

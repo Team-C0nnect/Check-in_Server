@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Table(name = "tb_condition")
-public class ConditionEntity{
+public class ConditionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -13,7 +13,7 @@ public class MovieAddRequest {
     @NotBlank
     private MovieListId movieListId;
 
-    public MovieList toMovieList(){
+    public MovieList toMovieList() {
         return MovieList.builder().movieListId(this.movieListId).build();
     }
 }

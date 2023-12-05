@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
 @Tag(name = "퇴사주", description = "퇴사주")
 @RestController
 @RequiredArgsConstructor
@@ -32,20 +33,20 @@ public class LeaveController {
     @Operation(summary = "퇴사주 등록", description = "퇴사주를 등록합니다")
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    public void registerLeaveWeek(@Validated @RequestBody LeaveRegisterRequest request){
+    public void registerLeaveWeek(@Validated @RequestBody LeaveRegisterRequest request) {
         leaveService.registerLeaveWeek(request.toLeave());
     }
 
     @Operation(summary = "퇴사주 삭제", description = "퇴사주를 삭제합니다")
     @DeleteMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public void refuseLeaveWeek(@Validated @RequestBody LeaveRequest request){
+    public void refuseLeaveWeek(@Validated @RequestBody LeaveRequest request) {
         leaveService.removeLeaveWeek(request.getId());
     }
 
     @Operation(summary = "퇴사주 조회", description = "퇴사주를 조회합니다")
     @GetMapping("")
-    public List<LeaveResponse> findLeaves(PageRequest request){
+    public List<LeaveResponse> findLeaves(PageRequest request) {
         return leaveQueryService.findLeaves(request);
     }
 }

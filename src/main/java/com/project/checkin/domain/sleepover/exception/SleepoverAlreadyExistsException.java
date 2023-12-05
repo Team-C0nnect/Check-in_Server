@@ -6,5 +6,7 @@ import com.project.checkin.global.exception.BusinessException;
 public class SleepoverAlreadyExistsException extends BusinessException {
     public static final SleepoverAlreadyExistsException EXCEPTION = new SleepoverAlreadyExistsException();
 
-    private SleepoverAlreadyExistsException(){super(SleepoverError.SLEEPOVER_CONFLICT);}
+    private SleepoverAlreadyExistsException() {
+        super(SleepoverError.SLEEPOVER_CONFLICT);
+    }
 }

@@ -14,7 +14,7 @@ public class VoteRequest {
     private LocalDateTime endDate;
     private LocalDateTime addDate;
 
-    public Vote toVote(){
+    public Vote toVote() {
         return Vote.builder()
                 .startDate(this.startDate)
                 .endDate(this.endDate)

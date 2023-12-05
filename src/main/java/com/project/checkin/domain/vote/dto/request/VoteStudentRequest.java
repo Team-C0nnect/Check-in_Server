@@ -12,7 +12,7 @@ public class VoteStudentRequest {
     private MovieListId id;
     private Long userId;
 
-    public VoteStudent toVoteStudent(){
+    public VoteStudent toVoteStudent() {
         return VoteStudent.builder()
                 .id(this.id)
                 .userId(this.userId)
