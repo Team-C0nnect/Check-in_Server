@@ -6,6 +6,8 @@ import com.project.checkin.domain.wifi.exception.WifiAlreadyException;
 import com.project.checkin.domain.wifi.exception.WifiNotFoundException;
 import com.project.checkin.domain.wifi.mapper.WifiMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,12 +28,12 @@ public class WifiServiceImpl implements WifiService{
     }
 
     @Override
-    public boolean wifiCheck(WifiRequest wifiRequest){
+    public ResponseEntity<Void> wifiCheck(WifiRequest wifiRequest){
 
-        if (wifiRepository.findBySsid(wifiRequest.getSsid()).isEmpty()){
+        if(wifiRepository.findBySsid(wifiRequest.getSsid()).isEmpty()){
             throw WifiNotFoundException.EXCEPTION;
         }
-        return true;
+        return ResponseEntity.ok().build();
 
     }
 
