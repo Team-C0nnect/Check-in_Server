@@ -16,12 +16,12 @@ import static com.project.checkin.domain.sleepover.domain.QSleepoverEntity.sleep
 
 @Repository
 @RequiredArgsConstructor
-public class SleepoverQueryRepositoryImpl implements SleepoverQueryRepository{
+public class SleepoverQueryRepositoryImpl implements SleepoverQueryRepository {
 
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Sleepover> findStudents(SleepoverPageRequest request){
+    public List<Sleepover> findStudents(SleepoverPageRequest request) {
         return queryFactory
                 .select(sleepoverProjection())
                 .from(sleepoverEntity)
@@ -34,21 +34,14 @@ public class SleepoverQueryRepositoryImpl implements SleepoverQueryRepository{
                 .fetch();
     }
 
-
     private ConstructorExpression<Sleepover> sleepoverProjection() {
         return Projections.constructor(Sleepover.class,
                 sleepoverEntity.id,
-                sleepoverEntity.userId,
-                sleepoverEntity.startDateTime,
-                sleepoverEntity.endDateTime,
-                sleepoverEntity.reason,
-                sleepoverEntity.approval,
-                sleepoverEntity.createdDateTime,
-                sleepoverEntity.modifiedDateTime);
+                sleepoverEntity.approval);
     }
 
     private BooleanExpression inStatus(List<SleepoverStatus> statuses) {
-        if(statuses.isEmpty()){
+        if (statuses.isEmpty()) {
             return null;
         }
         return sleepoverEntity.approval.in(statuses);

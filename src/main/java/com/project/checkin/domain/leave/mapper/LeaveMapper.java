@@ -4,9 +4,6 @@ import com.project.checkin.domain.leave.domain.LeaveEntity;
 import com.project.checkin.domain.leave.dto.Leave;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 @Component
 public class LeaveMapper {
 

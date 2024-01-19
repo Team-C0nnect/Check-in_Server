@@ -24,4 +24,5 @@ public class SleepoverQueryServiceImpl implements SleepoverQueryService {
     public List<Sleepover> findSleepoverStudents(SleepoverPageRequest request) {
         return queryRepository.findStudents(request);
     }
+
 }

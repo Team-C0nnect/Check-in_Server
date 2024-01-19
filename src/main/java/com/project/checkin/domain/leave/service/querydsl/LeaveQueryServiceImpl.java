@@ -14,10 +14,12 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class LeaveQueryServiceImpl implements LeaveQueryService{
+
     private final LeaveQueryRepository queryRepository;
 
     @Override
     public List<LeaveResponse> findLeaves(PageRequest pageRequest) {
         return queryRepository.findLeaves(pageRequest);
     }
+
 }

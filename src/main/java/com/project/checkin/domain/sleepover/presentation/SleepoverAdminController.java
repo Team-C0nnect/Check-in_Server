@@ -3,7 +3,6 @@ package com.project.checkin.domain.sleepover.presentation;
 import com.project.checkin.domain.sleepover.dto.Sleepover;
 import com.project.checkin.domain.sleepover.dto.request.SleepoverPageRequest;
 import com.project.checkin.domain.sleepover.dto.request.SleepoverSettingRequest;
-import com.project.checkin.domain.sleepover.dto.response.SleepoverResponse;
 import com.project.checkin.domain.sleepover.service.SleepoverService;
 import com.project.checkin.domain.sleepover.service.querydsl.SleepoverQueryService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,8 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,14 +32,14 @@ public class SleepoverAdminController {
     @Operation(summary = "외박 승인")
     @PutMapping("/accept")
     @ResponseStatus(HttpStatus.OK)
-    public void acceptSleepover( @RequestBody SleepoverSettingRequest request){
+    public void acceptSleepover(@RequestBody SleepoverSettingRequest request) {
         sleepoverService.acceptSleepover(request.getSleepoverId());
     }
 
     @Operation(summary = "외박 거절")
     @PutMapping("/refuse")
     @ResponseStatus(HttpStatus.OK)
-    public void refuseSleepover(@Validated @RequestBody SleepoverSettingRequest request){
+    public void refuseSleepover(@Validated @RequestBody SleepoverSettingRequest request) {
         sleepoverService.refuseSleepover(request.getSleepoverId());
     }
 

@@ -33,8 +33,8 @@ public class ConditionQueryRepositoryImpl implements ConditionQueryRepository {
                 .fetch();
     }
 
-    private BooleanExpression inFeels(List<Feels> feels){
-        if(feels.isEmpty()){
+    private BooleanExpression inFeels(List<Feels> feels) {
+        if (feels.isEmpty()) {
             return null;
         }
         return conditionEntity.todayFeels.in(feels);

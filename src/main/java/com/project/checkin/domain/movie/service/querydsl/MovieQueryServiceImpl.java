@@ -15,8 +15,10 @@ import java.util.List;
 public class MovieQueryServiceImpl implements MovieQueryService {
 
     private final MovieQueryRepository movieQueryRepository;
+
     @Override
     public List<Movie> findMovies(MoviePageRequest moviePageRequest) {
         return movieQueryRepository.findMovies(moviePageRequest);
     }
+
 }

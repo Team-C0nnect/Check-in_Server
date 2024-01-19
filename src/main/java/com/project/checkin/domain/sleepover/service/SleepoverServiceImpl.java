@@ -20,18 +20,7 @@ public class SleepoverServiceImpl implements SleepoverService {
     private final SleepoverRepository sleepoverRepository;
     private final UserSecurity userSecurity;
     private final SleepoverMapper sleepoverMapper;
-//    private SleepoverEntity sleepover;
 
-//    @Override
-//    public Sleepover find() {
-//        return sleepoverRepository.findAll()
-//        return sleepoverRepository
-//
-//                .findById(this.sleepover.getId())
-//                .map(sleepoverMapper::toSleepover)
-//
-//                .orElseThrow(() -> SleepoverNotFoundException.EXCEPTION);
-//    }
     @Override
     public void registerSleepover(Sleepover sleepover) {
         if (sleepoverRepository.findByUserId(userSecurity.getUser().getId()).isPresent()) {

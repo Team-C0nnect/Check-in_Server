@@ -12,4 +12,5 @@ public class SleepoverSettingRequest {
     @Schema(description = "외박거절")
     @NotNull
     private Long sleepoverId;
+
 }
