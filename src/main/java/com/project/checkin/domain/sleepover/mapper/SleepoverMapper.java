@@ -35,7 +35,6 @@ public class SleepoverMapper {
     }
     public SleepoverEntity toCreate(Sleepover sleepover){
         return SleepoverEntity.builder()
-                .userId(sleepover.getUserId())
                 .startDateTime(sleepover.getStartDateTime())
                 .endDateTime(sleepover.getEndDateTime())
                 .reason(sleepover.getReason())

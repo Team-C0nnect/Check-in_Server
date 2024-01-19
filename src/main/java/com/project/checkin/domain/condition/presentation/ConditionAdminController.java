@@ -4,6 +4,7 @@ import com.project.checkin.domain.condition.dto.Condition;
 import com.project.checkin.domain.condition.dto.request.ConditionPageRequest;
 import com.project.checkin.domain.condition.service.querydsl.ConditionQueryService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Tag(name = "컨디션 관리자", description = "컨디션 관리자")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/condition-admin")
