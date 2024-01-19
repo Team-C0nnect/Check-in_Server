@@ -16,4 +16,5 @@ public enum SleepoverError implements ErrorProperty {
 
     private final HttpStatus status;
     private final String message;
+
 }

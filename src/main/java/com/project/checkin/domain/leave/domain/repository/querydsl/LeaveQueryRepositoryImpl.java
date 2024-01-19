@@ -4,12 +4,8 @@ import com.project.checkin.domain.leave.dto.response.LeaveResponse;
 import com.project.checkin.global.common.dto.request.PageRequest;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,7 +14,7 @@ import static com.project.checkin.domain.leave.domain.QLeaveEntity.leaveEntity;
 
 @Repository
 @RequiredArgsConstructor
-public class LeaveQueryRepositoryImpl implements LeaveQueryRepository{
+public class LeaveQueryRepositoryImpl implements LeaveQueryRepository {
 
     private final JPAQueryFactory queryFactory;
 
@@ -28,7 +24,7 @@ public class LeaveQueryRepositoryImpl implements LeaveQueryRepository{
                 .select(leaveProjection())
                 .from(leaveEntity)
                 .orderBy(leaveEntity.userId.desc())
-                .offset(request.getPage()-1 * request.getSize())
+                .offset(request.getPage() - 1 * request.getSize())
                 .limit(request.getSize())
                 .fetch();
     }

@@ -15,8 +15,6 @@ import java.time.LocalDateTime;
 public class SleepoverRequest {
 
     @Schema(description = "외박자")
-    @NotNull
-    private Long userId;
     @NotBlank
     private String reason;
     @NotNull
@@ -28,9 +26,8 @@ public class SleepoverRequest {
 
     public Sleepover toSleepover() {
         return Sleepover.builder()
-                .userId(this.userId)
-                .startDateTime(startDateTime)
-                .endDateTime(endDateTime)
+                .startDateTime(this.startDateTime)
+                .endDateTime(this.endDateTime)
                 .reason(this.reason)
                 .approval(this.approval)
                 .build();

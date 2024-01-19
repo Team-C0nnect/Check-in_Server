@@ -1,10 +1,6 @@
-package com.project.checkin.domain.condition.domain;
+package com.project.checkin.domain.vote.domain;
 
-import com.project.checkin.domain.condition.domain.enums.Feels;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,24 +14,21 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "tb_vote")
+@Getter
 @AllArgsConstructor
-@Table(name = "tb_condition")
-public class ConditionEntity {
+@Builder
+public class VoteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long userId;
+    private LocalDateTime startDate;
 
-    @Enumerated(EnumType.STRING)
-    private Feels todayFeels;
+    private LocalDateTime endDate;
 
-    @Column(nullable = false)
-    private LocalDateTime endDateTime;
+    private LocalDateTime addDate;
 
 }

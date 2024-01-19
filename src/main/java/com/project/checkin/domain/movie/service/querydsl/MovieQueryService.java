@@ -6,5 +6,7 @@ import com.project.checkin.domain.movie.dto.request.MoviePageRequest;
 import java.util.List;
 
 public interface MovieQueryService {
+
     List<Movie> findMovies(MoviePageRequest moviePageRequest);
+
 }
